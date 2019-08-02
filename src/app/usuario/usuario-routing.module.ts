@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 
 
+
 const routes: Routes = [
   { path: "usuario/configuracion", component: ConfiguracionComponent },
 ];
