@@ -10,6 +10,7 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
   imports: [
     CommonModule,
     UsuarioRoutingModule
-  ]
+  ],
+  exports: [ConfiguracionComponent]
 })
 export class UsuarioModule { }

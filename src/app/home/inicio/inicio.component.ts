@@ -33,7 +33,7 @@ export class InicioComponent implements OnInit {
       (respuesta: UsuarioLogin) => (this.datos = respuesta),
       error => (this.error = error),
       () => {
-        this.router.navigate(["/"]);
+        this.router.navigate(['/usuario/configuracion']);
       }
     );
   }
