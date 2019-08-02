@@ -1,0 +1,11 @@
+<!--El componente principal de la aplicacion, se llama desde el intext.html atravez de la etiqueta
+app-root-->
+
+<!--Primero definimos el header-->
+<app-header></app-header>
+<!--Primero definimos el banner-->
+<app-banner></app-banner>
+<app-inicio *ngIf="router.url == '/'"></app-inicio>
+<router-outlet></router-outlet>
+<!--Primero definimos el footer-->
+<app-footer></app-footer>
