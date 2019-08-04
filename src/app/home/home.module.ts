@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { InicioComponent } from './inicio/inicio.component';
 import { FormsModule } from '@angular/forms';
-import { ConfiguracionComponent } from '../usuario/configuracion/configuracion.component';
+import { RegistrarComponent } from './registrar/registrar.component';
+
 
 @NgModule({
-  declarations: [InicioComponent],
+  declarations: [InicioComponent, RegistrarComponent],
   imports: [CommonModule, HomeRoutingModule, FormsModule],
-  exports: [InicioComponent]
+  exports: [InicioComponent, RegistrarComponent]
 })
-export class HomeModule {}
+export class HomeModule {
+}

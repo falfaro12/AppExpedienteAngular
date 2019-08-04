@@ -5,7 +5,7 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
 
 
 const routes: Routes = [
-  { path: "usuario/configuracion", component: ConfiguracionComponent },
+  { path: "configuracion", component: ConfiguracionComponent },
 ];
 
 @NgModule({
