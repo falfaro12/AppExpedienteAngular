@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpResponse,
@@ -6,23 +6,26 @@ import {
   HttpEvent,
   HttpInterceptor,
   HTTP_INTERCEPTORS
-} from "@angular/common/http";
-import { Observable, of, throwError } from "rxjs";
-import { delay, mergeMap, materialize, dematerialize } from "rxjs/operators";
+} from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
-import { UsuarioLogin } from "../models/usuarioLogin";
-import { UserEntidad } from "../models/user-entidad";
+import { UsuarioLogin } from '../models/usuario-login';
+import { UserEntidad } from '../models/user-entidad';
 
 const users: UserEntidad[] = [
   {
     id: 1,
-    name: "usuario1",
-    email: "usuario1@gmail.com",
-    password: "123456",
-    remember_token: "",
-    created_at: new Date("2019-07-16 02:31:58"),
-    updated_at: new Date("2019-07-16 02:31:58"),
-    role_id: 1
+    nombre: 'usuario1',
+    email: 'usuario1@gmail.com',
+    password: '123456',
+    primerApellido: 'Alfaro',
+    segundoApellido: 'Vargas',
+    sexo: 'femenino',
+    remember_token: '',
+    created_at: new Date('2019-07-16 02:31:58'),
+    updated_at: new Date('2019-07-16 02:31:58'),
+    rol_id: 1
   }
 ];
 
@@ -43,9 +46,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function handleRoute() {
       switch (true) {
-        case url.endsWith("/users/authenticate") && method === "POST":
+        case url.endsWith('/users/authenticate') && method === 'POST':
           return authenticate();
-        case url.endsWith("/users") && method === "GET":
+        case url.endsWith('/users') && method === 'GET':
           return getUsers();
         default:
           // pass through any requests not handled above
@@ -60,16 +63,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       const user = users.find(
         x => x.email === email && x.password === password
       );
-      if (!user) return error("Email o password incorrecto");
+      if (!user) { return error("Email o contraseña incorrecto"); }
       return ok({
         id: user.id,
         email: user.email,
-        token: "fake-jwt-token"
+        token: 'fake-jwt-token'
       });
     }
 
     function getUsers() {
-      if (!isLoggedIn()) return unauthorized();
+      if (!isLoggedIn()) { return unauthorized(); }
       return ok(users);
     }
 
@@ -84,11 +87,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function unauthorized() {
-      return throwError({ status: 401, error: { message: "No autorizado" } });
+      return throwError({ status: 401, error: { message: 'No autorizado' } });
     }
 
     function isLoggedIn() {
-      return headers.get("Authorization") === "Bearer fake-jwt-token";
+      return headers.get('Authorization') === 'Bearer fake-jwt-token';
     }
   }
 }

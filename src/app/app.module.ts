@@ -9,6 +9,10 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { UsuarioModule } from './usuario/usuario.module';
 
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+import { ToastrModule } from "ngx-toastr";
+
 
 @NgModule({
   declarations: [
@@ -18,10 +22,13 @@ import { UsuarioModule } from './usuario/usuario.module';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    HomeModule,
+    UsuarioModule,
     AppRoutingModule,
     CoreModule,
-    HomeModule,
-    UsuarioModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

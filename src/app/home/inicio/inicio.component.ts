@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { UsuarioLogin } from 'src/app/share/models/usuario-login';
 import { AuthenticationServiceService } from 'src/app/share/authentication-service.service';
+import { NotificacionService } from 'src/app/share/notificacion.service.service';
 
 @Component({
   selector: 'app-inicio',
@@ -17,7 +18,8 @@ export class InicioComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private auntenticationService: AuthenticationServiceService
+    private auntenticationService: AuthenticationServiceService,
+    private notificacion: NotificacionService
 
   ) {
     if (auntenticationService.currentUserValue) {
@@ -25,8 +27,17 @@ export class InicioComponent implements OnInit {
   }
 }
 
-  ngOnInit() {
-  }
+ngOnInit() {
+  let parametro = +this.route.snapshot.paramMap.get("accion");
+  this.route.queryParams.subscribe(params => {
+    if (params.registrado !== undefined && params.registrado === "true") {
+      this.notificacion.msjSuccess(
+        "Registro de usuario satisfactorio! Por favor especifique las credenciales para ingresar!",
+        "Usuario"
+      );
+    }
+  });
+}
   onSubmit(obj: UserEntidad) {
     // suscripción para uso del servicio
     this.auntenticationService.loginUser(obj).subscribe(

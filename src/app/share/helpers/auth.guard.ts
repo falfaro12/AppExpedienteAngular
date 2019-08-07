@@ -1,21 +1,21 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
   CanActivate,
   Router
-} from "@angular/router";
-import { Observable } from "rxjs";
-import { AuthenticationService } from "../authentication.service";
+} from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthenticationServiceService } from '../authentication-service.service';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationServiceService
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate {
     }
 
     // no logueado,redirigir a la página de inicio de sesión con la URL de retorno
-    this.router.navigate(["usuario/login"], {
+    this.router.navigate(['usuario/login'], {
       queryParams: { returnUrl: state.url }
     });
     return false;

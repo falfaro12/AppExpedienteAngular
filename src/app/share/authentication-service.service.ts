@@ -11,6 +11,7 @@ import { UserEntidad } from './models/user-entidad';
 import { RolEntidad } from './models/rol-entidad';
 import { UsuarioLogin } from './models/usuario-login';
 import { CustomHandlerErrorService } from './custom-handler-error-service.service';
+import { PerfilEntidad } from './models/Perfil-entidad';
 
 @Injectable({
   providedIn: 'root'
@@ -44,19 +45,20 @@ export class AuthenticationServiceService {
   getRoles(): Observable<RolEntidad> {
     return this.http
       .get<RolEntidad>(this.ServerUrl + 'expediente/rol')
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handler.handleError));
   }
 
   // Crear un Usuario
-  createUser(user: UserEntidad): Observable<UserEntidad> {
+  createUser(user: PerfilEntidad): Observable<PerfilEntidad> {
     // se manda la ruta,lo que le manda y y lo demas es opcional
     return this.http
-      .post<UserEntidad>(
+      .post<PerfilEntidad>(
         this.ServerUrl + 'expediente/registar',
         user,
         this.httpOptions
       )
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handler.handleError.bind(this)));
+
   }
   // Actualizar un Usuario
   // HttpClient API put() method => Update vj
@@ -102,29 +104,4 @@ export class AuthenticationServiceService {
     this.currentUserSubject.next(null);
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // Ocurrió un error del lado del cliente o de la red.
-
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-
-      // El backend devolvió un código de respuesta no exitoso.
-
-      // El cuerpo de la respuesta puede contener información sobre lo que salió mal
-
-      console.error(
-        `Error código ${error.status}, ` + `,detalle: ${error.error}`
-      );
-    }
-
-    /// devuelve un observable con un mensaje de error orientado al usuario
-
-    this.errorData = {
-      errorTitle: 'Falló la solicitud',
-      errorDesc: 'Ocurrió un inconveniente. Inténtelo de nuevo más tarde'
-    };
-    return throwError(this.errorData);
-  }
 }

@@ -19,18 +19,8 @@
             required
           />
         </div>
-        <div class="form-group">
-          <div class="form-group">
-            <label for="plataformas">Contraseña</label>
-            <input
-              type="text"
-              class="form-control"
-              name="password"
-              ngModel
-              required
-            />
-          </div>
-          <label for="plataformas">Nombre</label>
+       <div>
+         <label for="plataformas">Nombre</label>
           <input
             type="text"
             class="form-control"
@@ -66,7 +56,79 @@
             <option value="masculino">Masculino</option>
           </select>
         </div>
-
+        <div class="form-group">
+            <div class="form-group">
+                <label for="plataformas">Fecha de Nacimiento</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  name="fechaNacimiento"
+                  ngModel
+                  required
+                />
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="roles">Tipo de Sangre</label>
+            <select ngModel class="form-control" required name="tipoSangre" >
+              <option selected="true" disabled="disabled">seleccione el tipo de sangre</option>
+              <option value= "A+">A+</option>
+              <option value= "A-">A-</option>
+              <option value= "B+">B+</option>
+              <option value= "B-">B-</option>
+              <option value= "AB+">AB+</option>
+              <option value= "AB-">AB-</option>
+              <option value= "O+">O+</option>
+              <option value= "O-">O-</option>
+            </select>
+          </div>
+        <div class="form-group">
+            <div class="form-group">
+                <label for="plataformas">Dirección</label>
+                <textarea
+                  type="text"
+                  class="form-control"
+                  name="direccion"
+                  ngModel
+                  required></textarea>
+              </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+                <label for="plataformas">Número de Teléfono</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="numTelefonico"
+                  ngModel
+                  required
+                />
+              </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+                <label for="plataformas">Contacto de emergencia</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="contactoEmergencia"
+                  ngModel
+                  required
+                />
+              </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+              <label for="plataformas">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                ngModel
+                required
+              />
+            </div>
+          </div>
         <div class="align-center">
           <button type="submit" class="btn btn-primary" id="ActualizarUser">
             Registrar
