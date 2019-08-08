@@ -60,20 +60,24 @@ export class AuthenticationServiceService {
         this.httpOptions
       )
       .pipe(catchError(this.handler.handleError.bind(this)));
-
   }
- // Crear un Usuario
- createMedico(user: UserEntidad): Observable<UserEntidad> {
-  // se manda la ruta,lo que le manda y y lo demas es opcional
-  return this.http
-    .post<UserEntidad>(
-      this.ServerUrl + 'expediente/registarMedico',
-      user,
-      this.httpOptions
-    )
-    .pipe(catchError(this.handler.handleError.bind(this)));
-
-}
+  // Crear un Usuario
+  createMedico(user: UserEntidad): Observable<UserEntidad> {
+    // se manda la ruta,lo que le manda y y lo demas es opcional
+    let headers = new HttpHeaders();
+    if (this.UsuarioLogueado) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.UsuarioLogueado.access_token
+      );
+    }
+    return this.http
+      .post<UserEntidad>(
+        this.ServerUrl + 'expediente/registarMedico', {headers,
+        user}
+      )
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 
   // Actualizar un Usuario
   // HttpClient API put() method => Update vj
@@ -119,17 +123,28 @@ export class AuthenticationServiceService {
     this.currentUserSubject.next(null);
   }
 
-    // Obtener especialidad
-    getEspecialidad(): Observable<Especialidad> {
-      return this.http
-        .get<Especialidad>(this.ServerUrl + 'medico/especialidades')
-        .pipe(catchError(this.handler.handleError.bind(this)));
+  // Obtener especialidad
+  getEspecialidad(): Observable<Especialidad> {
+    return this.http
+      .get<Especialidad>(this.ServerUrl + 'expediente/medico/especialidades')
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  // Obtener especialidad
+  getMedicos(): Observable<Usuario> {
+    let headers = new HttpHeaders();
+    if (this.UsuarioLogueado) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.UsuarioLogueado.access_token
+      );
     }
-     // Obtener especialidad
-     getMedicos(): Observable<Usuario> {
-      return this.http
-        .get<Usuario>(this.ServerUrl + 'medico/Listamedicos')
-        .pipe(catchError(this.handler.handleError.bind(this)));
-    }
-
+    return this.http
+      .get<UserEntidad>(
+        this.ServerUrl + 'expediente/medico/Listamedicos',
+        {
+          headers
+        }
+      )
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 }
