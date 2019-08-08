@@ -8,6 +8,11 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { UsuarioModule } from './usuario/usuario.module';
+import { AlergiaModule } from './alergia/alergia.module';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -18,10 +23,13 @@ import { UsuarioModule } from './usuario/usuario.module';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule,
-    CoreModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    AlergiaModule,
     HomeModule,
-    UsuarioModule
+    UsuarioModule,
+    CoreModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

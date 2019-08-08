@@ -15,6 +15,7 @@ import { UsuarioLogin } from './models/usuario-login';
   providedIn: 'root'
 })
 export class AuthenticationServiceService {
+  UsuarioLoguedo: UsuarioLogin;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -57,6 +58,7 @@ export class AuthenticationServiceService {
       // almacene los detalles del usuario y el token jwt en el almacenamiento local para mantener al usuario conectado entre las actualizaciones de la página
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
+          this.UsuarioLoguedo = user;
           return user;
         })
       );

@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="card col-lg-12">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nombre"
+            ngModel
+            placeholder="Nombre alergia"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="descripcion">Categoría</label>
+          <select ngModel class="form-control" name="categoria">
+            <option>Alimentos</option>
+            <option>Ambiente</option>
+            <option>Medicamentos</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="nombre">Reacción</label>
+          <input
+            type="text"
+            ngModel
+            class="form-control"
+            name="reaccion"
+          />
+        </div>
+        <div class="form-group">
+          <label for="nombre">Observaciones</label>
+          <input
+            type="text"
+            ngModel
+            class="form-control"
+            name="observaciones"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary float-left">
+          Crear
+        </button>
+        <button
+          type="button"
+          (click)="onBack()"
+          class="btn btn-secondary float-right"
+        >
+          Regresar
+        </button>
+        {{ form.value | json }}
+      </form>
+    </div>
+  </div>
+</div>
+

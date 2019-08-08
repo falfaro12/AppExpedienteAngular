@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Alergia</th>
+          <th>Categoria</th>
+          <th>Reaccion</th>
+          <th>Observaciones</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let alergia of datos?.Alergia">
+          <td>{{ alergia.nombre }}</td>
+          <td>
+            <span
+              class="badge badge-info"
+            >
+              {{ alergia.categoria }}
+            </span>
+          </td>
+          <td>
+            {{ alergia.reaccion }}
+          </td>
+          <td>
+            {{alergia.observaciones}}
+          </td>
+          <td>
+            <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
+            <!--    Es necesario retroceder un nivel
+               Porque esta dentro de un componente que contiene rutas hijas -->
+            <button class="btn btn-info" (click)="linkEditar(alergia.id)">
+              Editar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
