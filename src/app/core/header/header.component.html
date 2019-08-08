@@ -25,7 +25,10 @@
             >Registrarse</a
           >
         </li>
-        <li class="nav-item dropdown" *ngIf="UsuarioActual?.user">
+
+
+        <!--Mantenimeintos administrador-->
+        <li class="nav-item dropdown" *ngIf="currentUser?.user.tipoUsuario==0">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -34,15 +37,38 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            >Mantenimientos</a
           >
-            Mantenimientos
-          </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a
               class="dropdown-item"
               [routerLink]="['alergiaM']"
               routerLinkActive="active"
               >Alergias</a
+            >
+            <a
+              class="dropdown-item"
+              [routerLink]="['/enfermedad']"
+              routerLinkActive="active"
+              >Enfermedad</a
+            >
+            <a
+              class="dropdown-item"
+              [routerLink]="['/alcohol']"
+              routerLinkActive="active"
+              >Alcohol</a
+            >
+            <a
+              class="dropdown-item"
+              [routerLink]="['/actividadFisica']"
+              routerLinkActive="active"
+              >Actividad Físicas</a
+            >
+            <a
+              class="dropdown-item"
+              [routerLink]="['/']"
+              routerLinkActive="active"
+              >Registrar Médicos</a
             >
           </div>
         </li>

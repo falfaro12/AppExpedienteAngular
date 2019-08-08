@@ -8,10 +8,11 @@ import { UserEntidad } from '../share/models/user-entidad';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationServiceService } from '../share/authentication-service.service';
 import { UsuarioIndexComponent } from './usuario-index/usuario-index.component';
+import { CrearMedicoComponent } from './crear-medico/crear-medico.component';
 
 
 @NgModule({
-  declarations: [ConfiguracionComponent, UsuarioIndexComponent],
+  declarations: [ConfiguracionComponent, UsuarioIndexComponent, CrearMedicoComponent],
   imports: [
     CommonModule,
     UsuarioRoutingModule,
