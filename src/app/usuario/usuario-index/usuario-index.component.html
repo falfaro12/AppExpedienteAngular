@@ -1,0 +1,16 @@
+<h2 style="text-align:center">Información del Usuario</h2>
+
+<div class="card">
+   <label *ngIf="UsuarioActual?.user" >{{UsuarioActual.user.nombre}}</label>
+  <p>Harvard University</p>
+  <div style="margin: 24px 0;">
+    <div>
+      <label for="plataformas">Nombre:</label>
+      <input
+        *ngIf="UsuarioActual?.user"
+        [(ngModel)]="UsuarioActual.user.nombre"
+      />
+    </div>
+  </div>
+  <p><button>Contact</button></p>
+</div>

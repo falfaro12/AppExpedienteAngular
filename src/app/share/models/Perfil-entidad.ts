@@ -1,4 +1,4 @@
-export interface UserEntidad {
+export interface PerfilEntidad {
   id: number;
   nombre: string;
   primerApellido: string;
@@ -7,7 +7,11 @@ export interface UserEntidad {
   email: string;
   password: string;
   rol_id: number;
-  remember_token: string;
+  fechaNacimiento: Date;
+  tipoSangre: string;
+  direccion: string;
+  numTelefonico: number;
+  contactoEmergencia: number;
   created_at: Date;
   updated_at: Date;
 }

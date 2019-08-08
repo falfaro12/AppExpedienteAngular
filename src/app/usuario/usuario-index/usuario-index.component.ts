@@ -1,15 +1,14 @@
-
 import { Component, OnInit } from '@angular/core';
-import { UsuarioLogin } from 'src/app/share/models/usuario-Login';
+import { UsuarioLogin } from 'src/app/share/models/usuario-login';
 import { Router } from '@angular/router';
 import { AuthenticationServiceService } from 'src/app/share/authentication-service.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-usuario-index',
+  templateUrl: './usuario-index.component.html',
+  styleUrls: ['./usuario-index.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class UsuarioIndexComponent implements OnInit {
   UsuarioActual: UsuarioLogin;
 
   constructor(
@@ -19,10 +18,7 @@ export class HeaderComponent implements OnInit {
     this.autentification.currentUser.subscribe(x => (this.UsuarioActual = x));
   }
 
-  ngOnInit() {}
-
-  logout() {
-    this.autentification.logout();
-    this.router.navigate(['home/inicio']);
+  ngOnInit() {
   }
+
 }
