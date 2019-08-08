@@ -9,10 +9,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationServiceService } from '../share/authentication-service.service';
 import { UsuarioIndexComponent } from './usuario-index/usuario-index.component';
 import { CrearMedicoComponent } from './crear-medico/crear-medico.component';
+import { IndexMedicoComponent } from './index-medico/index-medico.component';
+import { MantenimientoMedicoComponent } from './mantenimiento-medico/mantenimiento-medico.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 
 @NgModule({
-  declarations: [ConfiguracionComponent, UsuarioIndexComponent, CrearMedicoComponent],
+  declarations: [ConfiguracionComponent, UsuarioIndexComponent, CrearMedicoComponent, IndexMedicoComponent, MantenimientoMedicoComponent, UsuarioComponent],
   imports: [
     CommonModule,
     UsuarioRoutingModule,

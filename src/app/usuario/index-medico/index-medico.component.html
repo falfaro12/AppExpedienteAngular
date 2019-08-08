@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nombre Completo</th>
+            <th>Sexo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let res of datos?.usaurios">
+            <td>{{ res.nombre }} {{ res.primerApellido }} {{ res.segundoApellido }}/td>
+            <td>
+              {{ res.sexo }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

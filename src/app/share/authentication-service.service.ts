@@ -12,6 +12,8 @@ import { RolEntidad } from './models/rol-entidad';
 import { UsuarioLogin } from './models/usuario-login';
 import { CustomHandlerErrorService } from './custom-handler-error-service.service';
 import { PerfilEntidad } from './models/Perfil-entidad';
+import { Especialidad } from './models/especialidad';
+import { Usuario } from './models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +62,19 @@ export class AuthenticationServiceService {
       .pipe(catchError(this.handler.handleError.bind(this)));
 
   }
+ // Crear un Usuario
+ createMedico(user: UserEntidad): Observable<UserEntidad> {
+  // se manda la ruta,lo que le manda y y lo demas es opcional
+  return this.http
+    .post<UserEntidad>(
+      this.ServerUrl + 'expediente/registarMedico',
+      user,
+      this.httpOptions
+    )
+    .pipe(catchError(this.handler.handleError.bind(this)));
+
+}
+
   // Actualizar un Usuario
   // HttpClient API put() method => Update vj
   // Crear un Usuario
@@ -103,5 +118,18 @@ export class AuthenticationServiceService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
+
+    // Obtener especialidad
+    getEspecialidad(): Observable<Especialidad> {
+      return this.http
+        .get<Especialidad>(this.ServerUrl + 'medico/especialidades')
+        .pipe(catchError(this.handler.handleError.bind(this)));
+    }
+     // Obtener especialidad
+     getMedicos(): Observable<Usuario> {
+      return this.http
+        .get<Usuario>(this.ServerUrl + 'medico/Listamedicos')
+        .pipe(catchError(this.handler.handleError.bind(this)));
+    }
 
 }
