@@ -8,7 +8,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <form #form="ngForm" (ngSubmit)="onsubmit(form.value)">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
         <div class="form-group">
           <label for="plataformas">Nombre</label>
           <input
@@ -51,24 +51,13 @@
             class="form-control"
             ngModel
             *ngIf="UsuarioActual?.user"
-              [(ngModel)]="UsuarioActual.user.sexo"
+            [(ngModel)]="UsuarioActual.user.sexo"
             name="sexo"
           >
             <option value="femenino">Femenino</option>
             <option value="masculino">Masculino</option>
           </select>
         </div>
-        <div class="form-group">
-            <label for="plataformas">Contraseña</label>
-            <input
-              type="text"
-              class="form-control"
-              name="password"
-              ngModel
-              required
-            />
-          </div>
-
         <div class="align-center">
           <button type="submit" class="btn btn-primary" id="ActualizarUser">
             Actualizar
