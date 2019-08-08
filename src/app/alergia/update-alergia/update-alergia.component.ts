@@ -22,6 +22,12 @@ export class UpdateAlergiaComponent implements OnInit {
     private notification: NotificationService
   ) { }
 
+  compareFn = this._compareFn.bind(this);
+  _compareFn(a, b) {
+    // verificar si los identificadores únicos son iguales
+    return a.categoria === b.categoria;
+  }
+
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get('id');
     this.alergiaService.getAlergia(id).subscribe(

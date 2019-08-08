@@ -79,7 +79,7 @@ export class AlergiaService {
       );
     }
     return this.http
-    .put<Alergia>(this.ServerUrl + 'expediente/alergias/update/' + id, alergia, {headers})
+    .put<Alergia>(this.ServerUrl + 'expediente/alergia/' + id, alergia, {headers})
     .pipe(catchError(this.handler.handleError.bind(this)));
   }
 }
