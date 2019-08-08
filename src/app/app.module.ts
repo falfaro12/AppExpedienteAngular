@@ -11,12 +11,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { AlergiaModule } from './alergia/alergia.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ToastrModule } from 'ngx-toastr';
-
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
-import { ToastrModule } from "ngx-toastr";
 
 
 @NgModule({
