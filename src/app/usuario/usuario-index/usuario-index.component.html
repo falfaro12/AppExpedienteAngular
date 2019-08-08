@@ -1,10 +1,16 @@
+<h2 style="text-align:center">Información del Usuario</h2>
+
 <div class="card">
-    <h1>John Doe</h1>
-    <p class="title">CEO & Founder, Example</p>
-    <p>Harvard University</p>
-    <a href="#"><i class="fa fa-dribbble"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <p><button>Editar Información</button></p>
+   <label *ngIf="UsuarioActual?.user" >{{UsuarioActual.user.nombre}}</label>
+  <p>Harvard University</p>
+  <div style="margin: 24px 0;">
+    <div>
+      <label for="plataformas">Nombre:</label>
+      <input
+        *ngIf="UsuarioActual?.user"
+        [(ngModel)]="UsuarioActual.user.nombre"
+      />
+    </div>
   </div>
+  <p><button>Contact</button></p>
+</div>

@@ -44,7 +44,7 @@ ngOnInit() {
       (respuesta: UsuarioLogin) => (this.datos = respuesta),
       error => (this.error = error),
       () => {
-        this.router.navigate(['usuario/configuracion']);
+        this.router.navigate(['usuario/Index']);
       }
     );
   }
