@@ -73,8 +73,7 @@ export class AuthenticationServiceService {
     }
     return this.http
       .post<UserEntidad>(
-        this.ServerUrl + 'expediente/registarMedico', {headers,
-        user}
+        this.ServerUrl + 'expediente/registarMedico',user, {headers}
       )
       .pipe(catchError(this.handler.handleError.bind(this)));
   }

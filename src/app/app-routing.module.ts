@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
+import { ServicioConsultaModule } from './servicio-consulta/servicio-consulta.module';
 
 const routes: Routes = [
   {
@@ -11,6 +12,11 @@ const routes: Routes = [
     path: "home",
     // loadChildren: "./home/home.module#HomeModule"
     loadChildren: () => import("./home/home.module").then(mod => mod.HomeModule)
+  },
+  {
+    path: "servicio",
+    // loadChildren: "./home/home.module#HomeModule"
+    loadChildren: () => import("./servicio-consulta/servicio-consulta.module").then(mod => mod.ServicioConsultaModule)
   },
 
 

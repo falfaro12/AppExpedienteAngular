@@ -1,7 +1,8 @@
-import { UserEntidad } from './user-entidad';
+import { UsuarioMedicoEntidad } from './usuarioMedico-entidad';
+
 
 // Funciona solo para un listado de medico
 export interface Usuario {
   msg: string;
-  usaurios: UserEntidad[];
+  usaurios: UsuarioMedicoEntidad[];
 }

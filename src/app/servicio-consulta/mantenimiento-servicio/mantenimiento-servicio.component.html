@@ -1,7 +1,7 @@
 <div class="tituloBanner">
   <div class="col-lg-12 mx-auto">
     <div class="site-heading">
-      <h1>Mantenimiento Médicos</h1>
+      <h1>Mantenimiento Servicio Consulta</h1>
     </div>
   </div>
 </div>
@@ -12,24 +12,24 @@
         <li class="nav-item">
           <a
             class="nav-link "
-            [routerLink]="['/MantMedico/ListaMedico']"
+            [routerLink]="['/MantServicioConsulta/lista']"
             routerLinkActive="active"
-            [class.active]="router.url == '/'"
-            >Lista de Médicos</a
+            [class.active]="router.url == '/MantServicioConsulta/lista'"
+            >Lista de Servicios Consulta</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
-            [routerLink]="['/MantMedico/CrearMedico']"
+            [routerLink]="['/MantServicioConsulta/crear']"
             routerLinkActive="active"
-            >Crear  Médico</a
+            >Crear  Servicio Consulta</a
           >
         </li>
       </ul>
-      <app-index-medico
-        *ngIf="router.url == 'MantMedico'"
-      ></app-index-medico>
+      <app-servicio-index
+        *ngIf="router.url == '/restauranteM'"
+       > </app-servicio-index>
       <router-outlet></router-outlet>
     </div>
   </div>

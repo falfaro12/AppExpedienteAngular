@@ -68,12 +68,48 @@
             >
             <a
               class="dropdown-item"
-              [routerLink]="['/MantMedico']"
+              [routerLink]="['/MantMedico/ListaMedico']"
               routerLinkActive="active"
               >Registrar Médicos</a
             >
           </div>
         </li>
+        <!--Mantenimiento Medico-->
+        <li
+          class="nav-item dropdown"
+          *ngIf="UsuarioActual?.user.rol_id == 2"
+        >
+          <a class="nav-link" [routerLink]="['/MantServicioConsulta/lista']" routerLinkActive="active"
+            >Servicio Consulta</a>
+        </li>
+        <!--Mantenimientos usuario paciente -->
+        <li class="nav-item dropdown" *ngIf="UsuarioActual?.user.rol_id==3">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Acciones</a
+            >
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a
+                class="dropdown-item"
+                [routerLink]="['/']"
+                routerLinkActive="active"
+                >Gestión de Expedientes</a
+              >
+              <a
+                class="dropdown-item"
+                [routerLink]="['/']"
+                routerLinkActive="active"
+                >Gestión de Perfiles</a
+              >
+            </div>
+          </li>
+
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <div class="form-group mb-2">

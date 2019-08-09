@@ -5,12 +5,16 @@
         <thead>
           <tr>
             <th>Nombre Completo</th>
+            <th>Correo Electrónico</th>
             <th>Sexo</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let res of datos?.usaurios">
             <td>{{ res.nombre }} {{ res.primerApellido }} {{ res.segundoApellido }} </td>
+            <td>
+              {{ res.email }}
+            </td>
             <td>
               {{ res.sexo }}
             </td>

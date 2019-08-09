@@ -12,6 +12,7 @@ import { AlergiaModule } from './alergia/alergia.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ServicioConsultaModule } from './servicio-consulta/servicio-consulta.module';
 
 
 @NgModule({
@@ -27,8 +28,10 @@ import { ToastrModule } from 'ngx-toastr';
     AlergiaModule,
     HomeModule,
     UsuarioModule,
+    ServicioConsultaModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServicioConsultaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

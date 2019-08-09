@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationServiceService } from 'src/app/share/authentication-service.service';
 import { NotificacionService } from 'src/app/share/notificacion.service.service';
 import { Usuario } from 'src/app/share/models/usuario';
+import { UsuarioMedicoEntidad } from 'src/app/share/models/usuarioMedico-entidad';
 
 @Component({
   selector: 'app-index-medico',
@@ -13,7 +14,7 @@ import { Usuario } from 'src/app/share/models/usuario';
 })
 export class IndexMedicoComponent implements OnInit {
   UsuarioActual: UsuarioLogin;
-  usuarios: UserEntidad[];
+  usuarios: UsuarioMedicoEntidad[];
   datos: Usuario;
   error: any;
   constructor(

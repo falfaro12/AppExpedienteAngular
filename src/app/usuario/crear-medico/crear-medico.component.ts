@@ -43,14 +43,14 @@ export class CrearMedicoComponent implements OnInit {
       // complete
       () => {
         this.router.navigate(['MantMedico/ListaMedico'], {
-          queryParams: {registrado: 'true'}
+          queryParams: {registradoMedico: 'true'}
          });
 
       }
     );
   }
   onBack() {
-    this.router.navigate(['/MantMedico']);
+    this.router.navigate(['/MantMedico/ListaMedico']);
   }
 
 }
