@@ -3,12 +3,13 @@ import { UserEntidad } from './user-entidad';
 
 export interface ServicioConsultasEntidad {
   id: number;
-  Precio: number;
-  Ubicacion: string;
+  precio: DoubleRange;
+  ubicacion: string;
   id_doctor: number;
-  especialidad_id: Array<number>;
-  especialidades: EspecialidadEntidad[];
+  id_Especialidad: Array<number>;
+  especialidad: EspecialidadEntidad[];
   user: UserEntidad;
   created_at: Date;
   updated_at: Date;
+
 }

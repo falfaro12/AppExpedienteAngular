@@ -13,8 +13,7 @@ import { UsuarioMedicoEntidad } from 'src/app/share/models/usuarioMedico-entidad
   styleUrls: ['./index-medico.component.css']
 })
 export class IndexMedicoComponent implements OnInit {
-  UsuarioActual: UsuarioLogin;
-  usuarios: UsuarioMedicoEntidad[];
+  usuario: UserEntidad[];
   datos: Usuario;
   error: any;
   constructor(
@@ -40,7 +39,8 @@ export class IndexMedicoComponent implements OnInit {
     this.Authentication.getMedicos().subscribe(
       (respuesta: Usuario) => {
         this.datos = respuesta;
-        this.usuarios = this.datos.usaurios;
+        this.usuario = this.datos.Medicos;
+        console.log(this.usuario);
       },
       error => (this.error = error)
     );

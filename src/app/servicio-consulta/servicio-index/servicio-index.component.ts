@@ -48,7 +48,8 @@ export class ServicioIndexComponent  implements OnInit {
     this.servicioService.getServicios(this.UsuarioActual.user.id).subscribe(
       (respuesta: ServicioConsulta) => {
         this.datos = respuesta;
-        this.servicio = this.datos.ServicioConsultas;
+        this.servicio = this.datos.servicio;
+        console.log(this.servicio);
       },
       error => (this.error = error)
     );

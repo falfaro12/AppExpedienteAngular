@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-     <div class="table-responsive">
+    <div class="table-responsive">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -11,16 +11,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let res of datos?.ServicioConsultas">
-            <td>{{res.id}}</td>
+          <tr *ngFor="let res of datos?.servicio">
+            <td>{{ res.id }}</td>
+            <td>₡ {{ res.precio }}</td>
+            <td>{{ res.ubicacion }}</td>
             <td>
-              {{ res.Precio }}
-            </td>
-            <td>
-              {{ res.Ubicacion }}
-            </td>
-            <td>
-              {{ res.especialidades }}
+              <span
+              class="badge badge-info" >
+              {{ res.especialidad.nombre }}
+            </span>
             </td>
             <td>
               <button class="btn btn-info" (click)="linkEditar(res.id)">
