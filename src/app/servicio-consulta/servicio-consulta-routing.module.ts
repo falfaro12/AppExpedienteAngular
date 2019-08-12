@@ -4,6 +4,7 @@ import { MantenimientoServicioComponent } from './mantenimiento-servicio/manteni
 import { ServicioIndexComponent } from './servicio-index/servicio-index.component';
 import { CrearServicioComponent } from './crear-servicio/crear-servicio.component';
 import { AuthGuard } from '../share/helpers/auth.guard';
+import { UpdateServicioComponent } from './update-servicio/update-servicio.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,11 @@ const routes: Routes = [
       }
     ]
   }
+  {
+    path: 'ActualizaServicio',
+    component: UpdateServicioComponent,
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

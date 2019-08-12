@@ -1,24 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicioConsulta } from 'src/app/share/models/ServicioConsulta';
+import { Especialidad } from 'src/app/share/models/especialidad';
 import { Router } from '@angular/router';
 import { ServicioConsultaService } from 'src/app/share/servicio-consulta.service';
 import { NotificacionService } from 'src/app/share/notificacion.service.service';
-import { Especialidad } from 'src/app/share/models/especialidad';
-import { ServicioConsulta } from 'src/app/share/models/ServicioConsulta';
 import { ServicioConsultasEntidad } from 'src/app/share/models/ServicioConsultas-entidad';
+import { UsuarioLogin } from 'src/app/share/models/usuario-login';
+import { AuthenticationServiceService } from 'src/app/share/authentication-service.service';
 
 @Component({
-  selector: 'app-crear-servicio',
-  templateUrl: './crear-servicio.component.html',
-  styleUrls: ['./crear-servicio.component.css']
+  selector: 'app-update-servicio',
+  templateUrl: './update-servicio.component.html',
+  styleUrls: ['./update-servicio.component.css']
 })
-export class CrearServicioComponent implements OnInit {
+export class UpdateServicioComponent implements OnInit {
   datos: ServicioConsulta;
+  servicio: ServicioConsultasEntidad;
   especialidad: Especialidad;
   error: any;
+  UsuarioActual: UsuarioLogin;
   constructor(
     private router: Router,
     private servicioService: ServicioConsultaService,
-    private notificacion: NotificacionService
+    private notificacion: NotificacionService,
+    private autentificacion: AuthenticationServiceService
   ) {
     this.getEspecialidad();
   }
@@ -36,11 +41,11 @@ export class CrearServicioComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(obj: ServicioConsultasEntidad) {
-    return this.servicioService.createServicio(obj).subscribe(
+    return this.servicioService.updateServicio(obj.id, obj).subscribe(
       (respuesta: ServicioConsulta) => {
         this.datos = respuesta;
         this.router.navigate(['/MantServicioConsulta/lista'], {
-          queryParams: { registradoServicio: 'true' }
+          queryParams: { actualizaServicio: 'true' }
         });
       },
       error => {
@@ -52,5 +57,3 @@ export class CrearServicioComponent implements OnInit {
   onBack() {
     this.router.navigate(['/MantServicioConsulta']);
   }
-
-}

@@ -13,6 +13,7 @@ import { ServicioConsulta } from './models/ServicioConsulta';
 import { catchError, retry } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Especialidad } from './models/especialidad';
+import { ServicioConsultasEntidad } from './models/ServicioConsultas-entidad';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,36 @@ export class ServicioConsultaService {
       x => (this.currentUser = x)
     );
   }
+
+  createServicio(servicio: ServicioConsultasEntidad): Observable<ServicioConsulta> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    servicio.id_doctor = this.currentUser.user.id;
+    return this.http
+    .post<ServicioConsulta>(this.ServerUrl + 'expediente/medico/agregarServicio', servicio, { headers })
+    .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  updateServicio(id: any, servicioConsulta: ServicioConsultasEntidad): Observable<ServicioConsulta> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    servicioConsulta.id_doctor = this.currentUser.user.id;
+    return this.http
+    .put<ServicioConsulta>(this.ServerUrl + 'expediente/medico/actualizaServicio/' + id, servicioConsulta, {headers})
+    .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
+
+
   // HttpClient API get() method => Listado de restaurantes
   getServicios(id: any): Observable<ServicioConsulta> {
     // se manda la ruta,lo que le manda y y lo demas es opcional

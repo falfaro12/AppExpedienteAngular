@@ -13,8 +13,7 @@
           <a
             class="nav-link "
             [routerLink]="['/MantServicioConsulta/lista']"
-            routerLinkActive="active"
-            [class.active]="router.url == '/MantServicioConsulta/lista'"
+
             >Lista de Servicios Consulta</a
           >
         </li>
@@ -23,13 +22,12 @@
             class="nav-link"
             [routerLink]="['/MantServicioConsulta/crear']"
             routerLinkActive="active"
-            >Crear  Servicio Consulta</a
+            >Crear Servicio Consulta</a
           >
         </li>
       </ul>
-      <app-servicio-index
-        *ngIf="router.url == '/restauranteM'"
-       > </app-servicio-index>
+      <app-servicio-index *ngIf="router.url == '/MantServicioConsulta'">
+      </app-servicio-index>
       <router-outlet></router-outlet>
     </div>
   </div>

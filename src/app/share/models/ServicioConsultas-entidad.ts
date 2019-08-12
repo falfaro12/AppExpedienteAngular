@@ -6,8 +6,8 @@ export interface ServicioConsultasEntidad {
   precio: DoubleRange;
   ubicacion: string;
   id_doctor: number;
-  id_Especialidad: Array<number>;
-  especialidad: EspecialidadEntidad[];
+  id_Especialidad: number;
+  especialidad: EspecialidadEntidad;
   user: UserEntidad;
   created_at: Date;
   updated_at: Date;

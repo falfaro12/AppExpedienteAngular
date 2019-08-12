@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+    <div class="card col-lg-12">
+      <form #form="ngForm"  *ngIf="servicio" (ngSubmit)="onSubmit(form.value)">
+          <input type="hidden" name="id" [(ngModel)]="servicio.id" />
         <div class="form-group">
           <label for="plataformas"> Precio</label>
           <input
@@ -9,6 +10,7 @@
             class="form-control"
             name="precio"
             ngModel
+              [(ngModel)]="servicio.precio"
             required
           />
         </div>
@@ -19,12 +21,13 @@
             class="form-control"
             name="ubicacion"
             ngModel
+            [(ngModel)]="servicio.ubicacion"
             required
           ></textarea>
         </div>
         <div class="form-group">
           <label for="plataformas">Especialidad</label>
-          <select  ngModel class="form-control" name="especialidad_id">
+          <select  ngModel [(ngModel)]="servicio.especialidad" class="form-control" name="especialidad_id">
             <option
               *ngFor="let p of especialidad?.especialidades"
               [value]="p.id"
@@ -34,7 +37,7 @@
         </div>
         <div class="align-center">
           <button type="submit" class="btn btn-primary" id="ActualizarUser">
-            Registrar
+            Actualizar
           </button>
         </div>
       </form>
