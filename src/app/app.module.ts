@@ -13,6 +13,7 @@ import { AlergiaModule } from './alergia/alergia.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ServicioConsultaModule } from './servicio-consulta/servicio-consulta.module';
+import { PerfilModule } from './perfil/perfil.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ServicioConsultaModule } from './servicio-consulta/servicio-consulta.mo
     ServicioConsultaModule,
     CoreModule,
     AppRoutingModule,
-    ServicioConsultaModule
+    ServicioConsultaModule,
+    PerfilModule
   ],
   providers: [],
   bootstrap: [AppComponent]
