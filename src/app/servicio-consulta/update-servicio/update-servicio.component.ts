@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicioConsulta } from 'src/app/share/models/ServicioConsulta';
 import { Especialidad } from 'src/app/share/models/especialidad';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ServicioConsultaService } from 'src/app/share/servicio-consulta.service';
 import { NotificacionService } from 'src/app/share/notificacion.service.service';
 import { ServicioConsultasEntidad } from 'src/app/share/models/ServicioConsultas-entidad';
@@ -19,7 +19,9 @@ export class UpdateServicioComponent implements OnInit {
   especialidad: Especialidad;
   error: any;
   UsuarioActual: UsuarioLogin;
+
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private servicioService: ServicioConsultaService,
     private notificacion: NotificacionService,
@@ -39,7 +41,18 @@ export class UpdateServicioComponent implements OnInit {
   }
 
   ngOnInit() {
+    let id = +this.route.snapshot.paramMap.get('id');
+    // suscripción para uso del servicio
+    this.servicioService.getServicio(id).subscribe(
+      (respuesta: ServicioConsulta) => {
+        this.datos = respuesta;
+        this.servicio = this.datos.servicio[0];
+      },
+      error => (this.error = error)
+    );
   }
+  ngDoCheck() {}
+  
   onSubmit(obj: ServicioConsultasEntidad) {
     return this.servicioService.updateServicio(obj.id, obj).subscribe(
       (respuesta: ServicioConsulta) => {
@@ -57,3 +70,5 @@ export class UpdateServicioComponent implements OnInit {
   onBack() {
     this.router.navigate(['/MantServicioConsulta']);
   }
+}
+

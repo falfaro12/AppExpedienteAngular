@@ -19,7 +19,7 @@ import { ServicioConsultasEntidad } from './models/ServicioConsultas-entidad';
   providedIn: 'root'
 })
 export class ServicioConsultaService {
-  currentUser: UsuarioLogin;
+ currentUser: UsuarioLogin;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -37,7 +37,13 @@ export class ServicioConsultaService {
       x => (this.currentUser = x)
     );
   }
-
+// HttpClient API get() method => Obtener resta
+getServicio(id: any): Observable<ServicioConsulta> {
+  return this.http.get<ServicioConsulta>(this.ServerUrl + 'expediente/cita/Servicio/' + id).pipe(
+    retry(1),
+    catchError(this.handler.handleError.bind(this))
+  );
+}
   createServicio(servicio: ServicioConsultasEntidad): Observable<ServicioConsulta> {
     let headers = new HttpHeaders();
     if (this.currentUser) {
@@ -61,7 +67,7 @@ export class ServicioConsultaService {
     }
     servicioConsulta.id_doctor = this.currentUser.user.id;
     return this.http
-    .put<ServicioConsulta>(this.ServerUrl + 'expediente/medico/actualizaServicio/' + id, servicioConsulta, {headers})
+    .patch<ServicioConsulta>(this.ServerUrl + 'expediente/medico/actualizaServicio/' + id, servicioConsulta, {headers})
     .pipe(catchError(this.handler.handleError.bind(this)));
   }
 

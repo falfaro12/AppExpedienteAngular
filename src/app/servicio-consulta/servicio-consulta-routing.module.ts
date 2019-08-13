@@ -8,6 +8,7 @@ import { UpdateServicioComponent } from './update-servicio/update-servicio.compo
 
 
 const routes: Routes = [
+  { path: 'servicio/actualiza/:id', component: UpdateServicioComponent, canActivate: [AuthGuard] },
   {
     path: 'MantServicioConsulta',
     component: MantenimientoServicioComponent,
@@ -23,13 +24,10 @@ const routes: Routes = [
         component: CrearServicioComponent,
         canActivate: [AuthGuard]
       }
+
     ]
-  }
-  {
-    path: 'ActualizaServicio',
-    component: UpdateServicioComponent,
-    canActivate: [AuthGuard]
   },
+
 ];
 
 @NgModule({

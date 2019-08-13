@@ -55,7 +55,7 @@ export class ServicioIndexComponent  implements OnInit {
     );
   }
   linkEditar(id: number) {
-    this.router.navigate(['/ActualizaServicio/', id], {
+    this.router.navigate(['/servicio/actualiza/', id], {
       relativeTo: this.route
     });
   }
