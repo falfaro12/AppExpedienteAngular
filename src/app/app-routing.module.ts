@@ -18,6 +18,11 @@ const routes: Routes = [
     // loadChildren: "./home/home.module#HomeModule"
     loadChildren: () => import("./servicio-consulta/servicio-consulta.module").then(mod => mod.ServicioConsultaModule)
   },
+  {
+    path: "perfil",
+    // loadChildren: "./home/home.module#HomeModule"
+    loadChildren: () => import("./perfil/perfil.module").then(mod => mod.PerfilModule)
+  },
 
 
   {
