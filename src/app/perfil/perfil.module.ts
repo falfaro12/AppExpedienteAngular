@@ -2,18 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PerfilRoutingModule } from './perfil-routing.module';
-import { UpdateIndexComponent } from './update-index/update-index.component';
 import { PerfilIndexComponent } from './perfil-index/perfil-index.component';
 import { PerfilCrearComponent } from './perfil-crear/perfil-crear.component';
-import { PerfilUpdateComponent } from './perfil-update/perfil-update.component';
 import { MantenimientoPerfilComponent } from './mantenimiento-perfil/mantenimiento-perfil.component';
-
+import { FormsModule } from '@angular/forms';
+import { DetallePerfilComponent } from './detalle-perfil/detalle-perfil.component';
 
 @NgModule({
-  declarations: [UpdateIndexComponent, PerfilIndexComponent, PerfilCrearComponent, PerfilUpdateComponent, MantenimientoPerfilComponent],
-  imports: [
-    CommonModule,
-    PerfilRoutingModule
-  ]
+  declarations: [
+    PerfilIndexComponent,
+    PerfilCrearComponent,
+    MantenimientoPerfilComponent,
+    DetallePerfilComponent
+  ],
+  imports: [CommonModule, PerfilRoutingModule, FormsModule]
 })
-export class PerfilModule { }
+export class PerfilModule {}

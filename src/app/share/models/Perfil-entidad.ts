@@ -12,6 +12,7 @@ export interface PerfilEntidad {
   direccion: string;
   numTelefonico: number;
   contactoEmergencia: number;
+  esDuenho: boolean;
   created_at: Date;
   updated_at: Date;
 }

@@ -30,6 +30,7 @@ import { PerfilModule } from './perfil/perfil.module';
     HomeModule,
     UsuarioModule,
     ServicioConsultaModule,
+    PerfilModule,
     CoreModule,
     AppRoutingModule,
     ServicioConsultaModule,

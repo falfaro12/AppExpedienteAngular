@@ -20,8 +20,8 @@ export class MantenimientoPerfilComponent implements OnInit {
     let parametro = +this.route.snapshot.paramMap.get('accion');
     this.route.queryParams.subscribe(params => {
       if (
-        params.registroPerfil !== undefined &&
-        params.registroPerfil === 'true'
+        params.registradoPerfil !== undefined &&
+        params.registradoPerfil === 'true'
       ) {
         this.notificacion.msjSuccess(
           'Registro de Perfil satisfactorio!',

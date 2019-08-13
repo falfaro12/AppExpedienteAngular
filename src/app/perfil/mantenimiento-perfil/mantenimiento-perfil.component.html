@@ -12,7 +12,7 @@
         <li class="nav-item">
           <a
             class="nav-link "
-            [routerLink]="['/MantServicioConsulta/lista']"
+            [routerLink]="['/MantPerfil/lista']"
 
             >Lista de Perfiles</a
           >
@@ -20,13 +20,13 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            [routerLink]="['/MantServicioConsulta/crear']"
+            [routerLink]="['/MantPerfil/crear']"
             routerLinkActive="active"
             >Crear Perfil</a
           >
         </li>
       </ul>
-      <app-perfil-index *ngIf="router.url == '/MantServicioConsulta'">
+      <app-perfil-index *ngIf="router.url == '/MantPerfil'">
       </app-perfil-index>
       <router-outlet></router-outlet>
     </div>
