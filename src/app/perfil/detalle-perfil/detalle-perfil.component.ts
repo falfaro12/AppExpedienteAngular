@@ -24,7 +24,7 @@ export class DetallePerfilComponent implements OnInit {
     this.perfilService.showPerfil(id).subscribe(
       (respuesta: Perfil) => {
         this.datos = respuesta;
-        this.perfil = this.datos.Perfil;
+        this.perfil = this.datos.Perfil[0];
         console.log(this.perfil);
       },
       error => (this.error = error)
