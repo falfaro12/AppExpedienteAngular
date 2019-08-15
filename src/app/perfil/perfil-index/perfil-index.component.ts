@@ -59,5 +59,8 @@ export class PerfilIndexComponent implements OnInit {
       relativeTo: this.route
     });
   }
+  linkExp(id: number) {
+    this.router.navigate(['./expediente/mantExpediente/', id]);
+  }
 }
 // Funcion que se conecta con el servicio para invocar a la funcion de obtener restaurantes
