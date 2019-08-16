@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Alergia } from '../../share/models/alergia';
-import { AlergiaEntidad } from '../../share/models/alergia-entidad';
-import { AlergiaService } from '../../share/alergia.service';
+import { Actividad } from '../../share/models/actividad';
+import { ActividadEntidad } from '../../share/models/actividad-entidad';
+import { ActividadService } from '../../share/actividad.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/share/notification.service';
 
 @Component({
-  selector: 'app-alergia-all-expediente',
-  templateUrl: './alergia-all-expediente.component.html',
-  styleUrls: ['./alergia-all-expediente.component.css']
+  selector: 'app-actividad-all-expediente',
+  templateUrl: './actividad-all-expediente.component.html',
+  styleUrls: ['./actividad-all-expediente.component.css']
 })
-export class AlergiaAllExpedienteComponent implements OnInit {
-  datos: Alergia;
-  alergias: AlergiaEntidad;
+export class ActividadAllExpedienteComponent implements OnInit {
+  datos: Actividad;
+  actividades: ActividadEntidad;
   error: {};
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private alergiaService: AlergiaService,
+    private actividadService: ActividadService,
     private notification: NotificationService
   ) { }
 
@@ -38,12 +38,12 @@ export class AlergiaAllExpedienteComponent implements OnInit {
         'Actualizar Alergia'
       );
     }
-
   }
   linkEditar(id: number) {
-    this.router.navigate(['../updateAlergiaExp/', id], {relativeTo: this.route});
+    this.router.navigate(['../updateActividadExp/', id], {relativeTo: this.route});
   }
   linkCrear() {
-    this.router.navigate(['../createAlergiaExp'], {relativeTo: this.route});
+    this.router.navigate(['../createActividadExp'], {relativeTo: this.route});
   }
+
 }

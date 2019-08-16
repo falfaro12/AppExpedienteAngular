@@ -2,11 +2,21 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MantenimientoExpedienteComponent } from './mantenimiento-expediente/mantenimiento-expediente.component';
 
-import { CreateAlergiaComponent } from '../alergia/create-alergia/create-alergia.component';
-import { UpdateAlergiaComponent } from '../alergia/update-alergia/update-alergia.component';
+
+
 import { EnfermedadAllExpedienteComponent } from './enfermedad-all-expediente/enfermedad-all-expediente.component';
 import { AlergiaAllExpedienteComponent } from './alergia-all-expediente/alergia-all-expediente.component';
 import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expediente.component';
+import { CreateAlergiaExpedienteComponent } from './create-alergia-expediente/create-alergia-expediente.component';
+import { UpdateAlergiaExpedienteComponent } from './update-alergia-expediente/update-alergia-expediente.component';
+import { ActividadAllExpedienteComponent } from './actividad-all-expediente/actividad-all-expediente.component';
+import { CreateActividadExpedienteComponent } from './create-actividad-expediente/create-actividad-expediente.component';
+import { AlcoholAllComponent } from './alcohol-all/alcohol-all.component';
+import { UpdateAlcoholComponent } from './update-alcohol/update-alcohol.component';
+import { FumadoAllComponent } from './fumado-all/fumado-all.component';
+import { MedicamentosAllComponent } from './medicamentos-all/medicamentos-all.component';
+import { CirugiasAllComponent } from './cirugias-all/cirugias-all.component';
+
 
 
 const routes: Routes = [
@@ -24,15 +34,47 @@ const routes: Routes = [
       },
       {
         path: 'createAlergiaExp',
-        component: CreateAlergiaComponent
+        component: CreateAlergiaExpedienteComponent
       },
       {
         path: 'updateAlergiaExp',
-        component: UpdateAlergiaComponent
+        component: UpdateAlergiaExpedienteComponent
       },
       {
         path: 'listaEnfermedadExp',
         component: EnfermedadAllExpedienteComponent
+      },
+      {
+        path: 'listaActividad',
+        component: ActividadAllExpedienteComponent
+      },
+      {
+        path: 'createActividadExp',
+        component: CreateActividadExpedienteComponent
+      },
+      {
+        path: 'updateActividadExp',
+        component: UpdateAlergiaExpedienteComponent
+      },
+      {
+        path: 'listaAlcohol',
+        component: AlcoholAllComponent,
+      },
+      {
+        path: 'updateAlcohol',
+        component: UpdateAlcoholComponent
+      },
+      {
+        path: 'listaFumado',
+        component: FumadoAllComponent,
+      },
+      {
+        path: 'listaMedicamentos',
+        component: MedicamentosAllComponent
+      },
+      {
+        path: 'listaCiruguias',
+        component: CirugiasAllComponent
       }
     ]
   }
