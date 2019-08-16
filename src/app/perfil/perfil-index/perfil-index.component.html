@@ -23,7 +23,6 @@
             <td>{{ res.sexo }}</td>
             <td>{{ res.fechaNacimiento }}</td>
             <td>{{ res.tipoSangre }}</td>
-            <td>{{ res.direccion }}</td>
             <td>{{ res.numTelefonico }}</td>
             <td>{{ res.contactoEmergencia }}</td>
             <td>{{ res.esDuenho }}</td>
@@ -31,6 +30,9 @@
               <button class="btn btn-info" (click)="linkEditar(res.id)">
                 Detalle
               </button>
+            </td>
+            <td>
+              <button class="btn btn-info" ><a [routerLink]="['../../mantExpediente']" routerLinkActive="router-link-active" >Expediente</a></button>
             </td>
           </tr>
         </tbody>

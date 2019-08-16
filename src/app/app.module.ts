@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ServicioConsultaModule } from './servicio-consulta/servicio-consulta.module';
 import { PerfilModule } from './perfil/perfil.module';
+import { ExpedienteModule } from './expediente/expediente.module';
 
 
 @NgModule({
@@ -31,10 +32,12 @@ import { PerfilModule } from './perfil/perfil.module';
     UsuarioModule,
     ServicioConsultaModule,
     PerfilModule,
+    ExpedienteModule,
     CoreModule,
     AppRoutingModule,
     ServicioConsultaModule,
-    PerfilModule
+    PerfilModule,
+    ExpedienteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

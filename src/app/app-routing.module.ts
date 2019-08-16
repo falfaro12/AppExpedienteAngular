@@ -23,8 +23,10 @@ const routes: Routes = [
     // loadChildren: "./home/home.module#HomeModule"
     loadChildren: () => import("./perfil/perfil.module").then(mod => mod.PerfilModule)
   },
-
-
+  {
+    path: 'expediente',
+    loadChildren: () => import('./expediente/expediente.module').then(mod => mod.ExpedienteModule)
+  },
   {
     path: 'alergia',
     loadChildren: () =>
