@@ -9,7 +9,6 @@ import { UpdateAlergiaExpedienteComponent } from './update-alergia-expediente/up
 import { EnfermedadAllExpedienteComponent } from './enfermedad-all-expediente/enfermedad-all-expediente.component';
 import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expediente.component';
 import { AlcoholAllComponent } from './alcohol-all/alcohol-all.component';
-import { CreateAlcoholComponent } from './create-alcohol/create-alcohol.component';
 import { UpdateAlcoholComponent } from './update-alcohol/update-alcohol.component';
 import { MedicamentosAllComponent } from './medicamentos-all/medicamentos-all.component';
 import { FumadoAllComponent } from './fumado-all/fumado-all.component';
@@ -27,7 +26,6 @@ import { UpdateActividadExpedienteComponent } from './update-actividad-expedient
                 EnfermedadAllExpedienteComponent,
                 DetalleExpedienteComponent,
                 AlcoholAllComponent,
-                CreateAlcoholComponent,
                 UpdateAlcoholComponent,
                 MedicamentosAllComponent,
                 FumadoAllComponent,

@@ -44,6 +44,9 @@ export class AlergiaAllComponent implements OnInit {
   linkEditar(id: number) {
     this.router.navigate(['/alergia/update/', id], {relativeTo: this.route});
   }
+  linkEliminar(id: number) {
+    this.router.navigate(['/alergia/update/', id], {relativeTo: this.route});
+  }
 
 
 

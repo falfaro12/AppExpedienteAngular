@@ -8,6 +8,7 @@
           <th>Reaccion</th>
           <th>Observaciones</th>
           <th>Editar</th>
+          <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -32,6 +33,14 @@
                Porque esta dentro de un componente que contiene rutas hijas -->
             <button class="btn btn-info" (click)="linkEditar(alergia.id)">
               Editar
+            </button>
+          </td>
+          <td>
+            <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
+            <!--    Es necesario retroceder un nivel
+               Porque esta dentro de un componente que contiene rutas hijas -->
+            <button class="btn btn-info" (click)="linkEliminar(alergia.id)">
+              Eliminar
             </button>
           </td>
         </tr>

@@ -82,4 +82,16 @@ export class AlergiaService {
     .put<Alergia>(this.ServerUrl + 'expediente/alergia/' + id, alergia, {headers})
     .pipe(catchError(this.handler.handleError.bind(this)));
   }
+  dropAlergia(id: any, alergia: AlergiaEntidad): Observable<Alergia> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+    .delete<Alergia>(this.ServerUrl + 'expediente/alergia/' + id, {headers} )
+    .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 }
