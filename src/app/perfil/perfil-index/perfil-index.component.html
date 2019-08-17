@@ -32,7 +32,7 @@
               </button>
             </td>
             <td>
-              <button class="btn btn-info" ><a [routerLink]="['../../mantExpediente']" routerLinkActive="router-link-active" >Expediente</a></button>
+              <button class="btn btn-info" (click)='linkExp(res.id)'><!--a [routerLink]="['../../mantExpediente']" routerLinkActive="router-link-active" >Expediente</a-->Expediente</button>
             </td>
           </tr>
         </tbody>
