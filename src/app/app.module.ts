@@ -15,6 +15,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { ServicioConsultaModule } from './servicio-consulta/servicio-consulta.module';
 import { PerfilModule } from './perfil/perfil.module';
 import { ExpedienteModule } from './expediente/expediente.module';
+import { EnfermedadModule } from './enfermedad/enfermedad.module';
+import { ActividadModule } from './actividad/actividad.module';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { ExpedienteModule } from './expediente/expediente.module';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AlergiaModule,
+    ActividadModule,
+    EnfermedadModule,
     HomeModule,
     UsuarioModule,
     ServicioConsultaModule,
@@ -37,7 +41,9 @@ import { ExpedienteModule } from './expediente/expediente.module';
     AppRoutingModule,
     ServicioConsultaModule,
     PerfilModule,
-    ExpedienteModule
+    ExpedienteModule,
+    EnfermedadModule,
+    ActividadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
