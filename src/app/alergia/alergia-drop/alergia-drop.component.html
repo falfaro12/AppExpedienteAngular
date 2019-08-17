@@ -8,7 +8,7 @@
           <th>Reaccion</th>
           <th>Observaciones</th>
           <th>Imagen</th>
-          <th>Eliminar</th>
+          <th>Restaurar</th>
         </tr>
       </thead>
       <tbody>
@@ -31,20 +31,20 @@
               [src]="obtenerImagen(alergia.ruta_imagen)"
             />
           </td>
-           <!--   <td>
-            <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a>
-          Es necesario retroceder un nivel
-               Porque esta dentro de un componente que contiene rutas hijas
-         <button class="btn btn-info" (click)="linkEditar(alergia.id)">
-              Editar
-            </button>
-          </td>-->
+          <!--   <td>
+              <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a>
+            Es necesario retroceder un nivel
+                 Porque esta dentro de un componente que contiene rutas hijas
+           <button class="btn btn-info" (click)="linkEditar(alergia.id)">
+                Editar
+              </button>
+            </td>-->
           <td>
             <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
             <!--    Es necesario retroceder un nivel
-               Porque esta dentro de un componente que contiene rutas hijas -->
-            <button class="btn btn-info" (click)="linkEliminar(alergia.id)">
-              Eliminar
+                 Porque esta dentro de un componente que contiene rutas hijas -->
+            <button class="btn btn-info" (click)="linkRestaurar(alergia.id)">
+              Restaurar
             </button>
           </td>
         </tr>
