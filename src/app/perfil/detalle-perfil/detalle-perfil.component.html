@@ -10,15 +10,28 @@
       <div class="card col-lg-12" *ngIf="perfil">
         <div class="card-body">
           <h5 class="card-title">{{ perfil.nombre }} {{ perfil.primerApellido }} {{ perfil.segundoApellido }}</h5>
-          <p class="card-text"> Cédula: {{ perfil.id }}</p>
           <p class="card-text">
-            <small class="text-muted">Número: {{ datos.Perfil[0].numTelefonico}}</small>
+              <small class="text-muted"> Cédula: {{ perfil.id }} </small></p>
+          <p class="card-text">
+            <small class="text-muted">Sexo: {{ perfil.sexo}}</small>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">Fecha de Nacimiento: {{ perfil.fechaNacimiento}}</small>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">Tipo de Sangre: {{ perfil.tipoSangre}}</small>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">Dirección: {{ perfil.direccion}}</small>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">Número Teléfono: {{ perfil.numTelefonico}}</small>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">Contacto Emergencia: {{ perfil.contactoEmergencia}}</small>
           </p>
         </div>
-        <div class="card-footer text-muted"> Precios:
-
-        </div>
-        <div class="card-footer">
+               <div class="card-footer">
           <button class="btn btn-outline-secondary" (click)="onBack()">
             <i class="fa fa-chevron-left"></i> Regresar
           </button>
