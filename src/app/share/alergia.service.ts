@@ -82,7 +82,7 @@ export class AlergiaService {
     .put<Alergia>(this.ServerUrl + 'expediente/alergia/' + id, alergia, {headers})
     .pipe(catchError(this.handler.handleError.bind(this)));
   }
-  dropAlergia(id: any, alergia: AlergiaEntidad): Observable<Alergia> {
+  dropAlergia(id: any): Observable<Alergia> {
     let headers = new HttpHeaders();
     if (this.currentUser) {
       headers = headers.append(
@@ -93,5 +93,8 @@ export class AlergiaService {
     return this.http
     .delete<Alergia>(this.ServerUrl + 'expediente/alergia/' + id, {headers} )
     .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  obtenerImagenService(rutaImagen) {
+    return this.ServerUrl + 'expediente/alergia/obtenerImagen/' + rutaImagen;
   }
 }

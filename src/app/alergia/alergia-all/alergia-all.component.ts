@@ -19,7 +19,7 @@ export class AlergiaAllComponent implements OnInit {
     private router: Router,
     private alergiaService: AlergiaService,
     private notification: NotificationService
-  ) { }
+  ) {}
 
   ngOnInit() {
     let notifC = false;
@@ -38,17 +38,21 @@ export class AlergiaAllComponent implements OnInit {
         'Actualizar Alergia'
       );
     }
-     // suscripcion para el consumo del servicio
-    this.alergiaService.getAlergias().subscribe((respuesta: Alergia) => (this.datos = respuesta), error => (this.error = error));
+    // suscripcion para el consumo del servicio
+    this.alergiaService
+      .getAlergias()
+      .subscribe(
+        (respuesta: Alergia) => (this.datos = respuesta),
+        error => (this.error = error)
+      );
   }
   linkEditar(id: number) {
-    this.router.navigate(['/alergia/update/', id], {relativeTo: this.route});
+    this.router.navigate(['/alergia/update/', id], { relativeTo: this.route });
   }
   linkEliminar(id: number) {
-    this.router.navigate(['/alergia/update/', id], {relativeTo: this.route});
+    return this.alergiaService.dropAlergia(id);
   }
-
-
-
-
+  obtenerImagen(ruta_imagen: string) {
+    return this.alergiaService.obtenerImagenService(ruta_imagen);
+  }
 }

@@ -15,9 +15,7 @@
         <tr *ngFor="let alergia of datos?.Alergia">
           <td>{{ alergia.nombre }}</td>
           <td>
-            <span
-              class="badge badge-info"
-            >
+            <span class="badge badge-info">
               {{ alergia.categoria }}
             </span>
           </td>
@@ -25,7 +23,13 @@
             {{ alergia.reaccion }}
           </td>
           <td>
-            {{alergia.observaciones}}
+            {{ alergia.observaciones }}
+          </td>
+          <td>
+            <img
+              class="custom_table_image img_fluid img-thumbnail"
+              [src]="obtenerImagen(alergia.ruta_imagen)"
+            />
           </td>
           <td>
             <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->

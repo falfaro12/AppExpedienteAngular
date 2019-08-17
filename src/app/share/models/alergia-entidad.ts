@@ -4,4 +4,5 @@ export interface AlergiaEntidad {
   categoria: string;
   reaccion: string;
   observaciones: string;
+  ruta_imagen: string;
 }

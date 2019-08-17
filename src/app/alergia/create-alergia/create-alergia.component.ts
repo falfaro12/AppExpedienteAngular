@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 import { Alergia } from 'src/app/share/models/alergia';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/share/notification.service';
-import { Photo } from 'src/app/share/models/Photo-Entidad';
+
 
 export interface ErrorEntidad {
   errors: { field: string; message: string }[];
