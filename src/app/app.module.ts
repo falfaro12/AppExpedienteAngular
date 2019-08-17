@@ -17,6 +17,7 @@ import { PerfilModule } from './perfil/perfil.module';
 import { ExpedienteModule } from './expediente/expediente.module';
 import { EnfermedadModule } from './enfermedad/enfermedad.module';
 import { ActividadModule } from './actividad/actividad.module';
+import { HorarioModule } from './horario/horario.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { ActividadModule } from './actividad/actividad.module';
     AlergiaModule,
     ActividadModule,
     EnfermedadModule,
+    HorarioModule,
     HomeModule,
     UsuarioModule,
     ServicioConsultaModule,
@@ -43,7 +45,8 @@ import { ActividadModule } from './actividad/actividad.module';
     PerfilModule,
     ExpedienteModule,
     EnfermedadModule,
-    ActividadModule
+    ActividadModule,
+    HorarioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
