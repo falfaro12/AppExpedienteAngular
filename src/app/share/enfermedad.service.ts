@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
-import { UsuarioLogin } from './models/usuario-login';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders
+} from '@angular/common/http';
+
 import { Router } from '@angular/router';
 import { AuthenticationServiceService } from './authentication-service.service';
 import { CustomHandlerErrorService } from './custom-handler-error-service.service';
-import { Actividad } from './models/actividad';
+import { UsuarioLogin } from './models/usuario-login';
+import { environment } from 'src/environments/environment';
+import { Enfermedad } from './models/enfermedad';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActividadService {
+export class EnfermedadService {
   currentUser: UsuarioLogin;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -31,7 +36,7 @@ export class ActividadService {
       x => (this.currentUser = x)
     );
   }
-  getActividad(): Observable<Actividad> {
+  getEnfermedad(): Observable<Enfermedad> {
     let headers = new HttpHeaders();
     if (this.currentUser) {
       headers = headers.append(
@@ -40,11 +45,11 @@ export class ActividadService {
       );
     }
     return this.http
-      .get<Actividad>(this.ServerUrl + 'expediente/actividad', { headers } ) .pipe(
+      .get<Enfermedad>(this.ServerUrl + 'expediente/enfermedad', { headers } ) .pipe(
         catchError(this.handler.handleError.bind(this))
       );
   }
   obtenerImagenService(rutaImagen) {
-    return this.ServerUrl + 'expediente/obtenerImagenActividad/' + rutaImagen;
+    return this.ServerUrl + 'expediente/obtenerImagenEnfermedad/' + rutaImagen;
   }
 }

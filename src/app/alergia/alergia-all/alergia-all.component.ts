@@ -19,15 +19,19 @@ export class AlergiaAllComponent implements OnInit {
     private router: Router,
     private alergiaService: AlergiaService,
     private notification: NotificationService
-  ) { }
+  ) {}
 
   ngOnInit() {
     let notifC = false;
     let notifM = false;
+    let notieM = false;
+    let notres = false;
     // Mensajes
     this.route.queryParams.subscribe(params => {
       notifC = params.create || false;
       notifM = params.update || false;
+      notieM = params.delete || false;
+      notres = params.restaurar || false;
     });
     if (notifC) {
       this.notification.msjSuccess('Alergia creada!', 'Crear Alergia');
@@ -38,14 +42,40 @@ export class AlergiaAllComponent implements OnInit {
         'Actualizar Alergia'
       );
     }
-     // suscripcion para el consumo del servicio
-    this.alergiaService.getAlergias().subscribe((respuesta: Alergia) => (this.datos = respuesta), error => (this.error = error));
+    if (notres) {
+      this.notification.msjSuccess(
+        'Alergia restaurada!',
+        'Restaurar Alergia'
+      );
+    }
+    if (notieM) {
+      this.notification.msjSuccess(
+        'Alergia Eliminada!',
+        'Eliminar'
+      );
+    }
+    // suscripcion para el consumo del servicio
+    this.alergiaService
+      .getAlergias()
+      .subscribe(
+        (respuesta: Alergia) => (this.datos = respuesta),
+        error => (this.error = error)
+      );
   }
   linkEditar(id: number) {
-    this.router.navigate(['/alergia/update/', id], {relativeTo: this.route});
+    this.router.navigate(['/alergia/update/', id], { relativeTo: this.route });
   }
+  linkEliminar(id: number) {
+    return this.alergiaService.dropAlergia(id).subscribe(
+      (respuesta: void) => {
+        this.router.navigate(['/alergiaM/lista'], {
+          queryParams: {delete: 'true'}
+        });
+      }
+    );
 
-
-
-
+  }
+  obtenerImagen(ruta_imagen: string) {
+    return this.alergiaService.obtenerImagenService(ruta_imagen);
+  }
 }

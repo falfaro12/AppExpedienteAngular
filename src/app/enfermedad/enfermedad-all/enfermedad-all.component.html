@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Enfermedad</th>
+          <th>Observaciones</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let enfermedad of datos?.Enfermedad">
+          <td>{{ enfermedad.nombre }}</td>
+          <td>
+            {{ enfermedad.observaciones }}
+          </td>
+          <td>
+            <img
+              class="custom_table_image img_fluid img-thumbnail" style="width: 200px; height: 200px;"
+              [src]="obtenerImagen(enfermedad.ruta_imagen)"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

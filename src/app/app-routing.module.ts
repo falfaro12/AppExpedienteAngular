@@ -32,6 +32,21 @@ const routes: Routes = [
     loadChildren: () =>
       import('./alergia/alergia.module').then(mod => mod.AlergiaModule)
   },
+  {
+    path: 'enfermedad',
+    loadChildren: () =>
+      import('./enfermedad/enfermedad.module').then(mod => mod.EnfermedadModule)
+  },
+  {
+    path: 'actividad',
+    loadChildren: () =>
+      import('./actividad/actividad.module').then(mod => mod.ActividadModule)
+  },
+  {
+    path: 'horario',
+    loadChildren: () =>
+      import('./horario/horario.module').then(mod => mod.HorarioModule)
+  },
   { path: "", redirectTo: "", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }
 

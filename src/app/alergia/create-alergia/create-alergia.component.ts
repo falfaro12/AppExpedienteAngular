@@ -5,6 +5,8 @@ import { NgForm } from '@angular/forms';
 import { Alergia } from 'src/app/share/models/alergia';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/share/notification.service';
+
+
 export interface ErrorEntidad {
   errors: { field: string; message: string }[];
 }
@@ -24,6 +26,7 @@ export class CreateAlergiaComponent implements OnInit {
 
   ngOnInit() {
   }
+
   ngDoCheck(){}
 
   onSubmit(obj: AlergiaEntidad) {

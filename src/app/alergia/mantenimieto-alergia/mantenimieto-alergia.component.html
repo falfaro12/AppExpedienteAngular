@@ -26,9 +26,17 @@
             >Crear Alergia</a
           >
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link "
+            [routerLink]="['/alergiaM/drop']"
+            routerLinkActive="active"
+            [class.active]="router.url == '/alergiaM/drop'"
+            >Lista de Alergias Borradas</a
+          >
+        </li>
       </ul>
-      <app-alergia-all *ngIf="router.url == '/alergiaM'">
-      </app-alergia-all>
+      <app-alergia-all *ngIf="router.url == '/alergiaM'"> </app-alergia-all>
       <router-outlet></router-outlet>
     </div>
   </div>

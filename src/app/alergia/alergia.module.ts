@@ -7,10 +7,11 @@ import { CreateAlergiaComponent } from './create-alergia/create-alergia.componen
 import { UpdateAlergiaComponent } from './update-alergia/update-alergia.component';
 import { MantenimietoAlergiaComponent } from './mantenimieto-alergia/mantenimieto-alergia.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AlergiaDropComponent } from './alergia-drop/alergia-drop.component';
 
 
 @NgModule({
-  declarations: [AlergiaAllComponent, CreateAlergiaComponent, UpdateAlergiaComponent, MantenimietoAlergiaComponent],
+  declarations: [AlergiaAllComponent, CreateAlergiaComponent, UpdateAlergiaComponent, MantenimietoAlergiaComponent, AlergiaDropComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

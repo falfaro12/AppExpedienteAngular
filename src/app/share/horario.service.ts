@@ -5,14 +5,15 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { AuthenticationServiceService } from './authentication-service.service';
 import { CustomHandlerErrorService } from './custom-handler-error-service.service';
-import { Actividad } from './models/actividad';
-import { Observable } from 'rxjs';
+import { HorarioEntidad } from './models/horario-entidad';
+import { Horario } from './models/horario';
 import { catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActividadService {
+export class HorarioService {
   currentUser: UsuarioLogin;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,14 +25,14 @@ export class ActividadService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private authenticationService: AuthenticationServiceService,
+    private AuthenticationService: AuthenticationServiceService,
     private handler: CustomHandlerErrorService
   ) {
-    this.authenticationService.currentUser.subscribe(
+    this.AuthenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
   }
-  getActividad(): Observable<Actividad> {
+  createServicio(horario: HorarioEntidad): Observable<Horario> {
     let headers = new HttpHeaders();
     if (this.currentUser) {
       headers = headers.append(
@@ -40,11 +41,7 @@ export class ActividadService {
       );
     }
     return this.http
-      .get<Actividad>(this.ServerUrl + 'expediente/actividad', { headers } ) .pipe(
-        catchError(this.handler.handleError.bind(this))
-      );
-  }
-  obtenerImagenService(rutaImagen) {
-    return this.ServerUrl + 'expediente/obtenerImagenActividad/' + rutaImagen;
+    .post<HorarioEntidad>(this.ServerUrl + 'expediente/medico/agregaHorario', horario, { headers })
+    .pipe(catchError(this.handler.handleError.bind(this)));
   }
 }

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Actividad Física</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let actividad of datos?.Actividad">
+          <td>{{ actividad.nombre }}</td>
+          <td>
+            <img
+              class="custom_table_image img_fluid img-thumbnail"  style="width: 200px; height: 200px;"
+              [src]="obtenerImagen(actividad.ruta_imagen)"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

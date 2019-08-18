@@ -43,6 +43,11 @@ export class AlergiaService {
     .get<Alergia>(this.ServerUrl + 'expediente/alergia')
     .pipe(catchError(this.handler.handleError.bind(this)));
   }
+  getAlergiasEliminadas(): Observable<Alergia> {
+    return this.http
+    .get<Alergia>(this.ServerUrl + 'expediente/alergiaEliminada')
+    .pipe(catchError(this.handler.handleError.bind(this)));
+  }
 
   getAlergia(id: any): Observable<Alergia> {
     let headers = new HttpHeaders();
@@ -81,5 +86,32 @@ export class AlergiaService {
     return this.http
     .put<Alergia>(this.ServerUrl + 'expediente/alergia/' + id, alergia, {headers})
     .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  dropAlergia(id: any): Observable<void> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+    .delete<void>(this.ServerUrl + 'expediente/alergia/' + id, {headers} )
+    .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  restaurarlergia(id: any): Observable<void> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+    .get<void>(this.ServerUrl + 'expediente/restaurarAlergia/' + id, {headers} )
+    .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  obtenerImagenService(rutaImagen) {
+    return this.ServerUrl + 'expediente/obtenerImagenAlergia/' + rutaImagen;
   }
 }

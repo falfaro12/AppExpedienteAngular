@@ -4,6 +4,7 @@ import { CreateAlergiaComponent} from './create-alergia/create-alergia.component
 import { UpdateAlergiaComponent} from './update-alergia/update-alergia.component';
 import { AlergiaAllComponent} from './alergia-all/alergia-all.component';
 import { MantenimietoAlergiaComponent } from './mantenimieto-alergia/mantenimieto-alergia.component';
+import { AlergiaDropComponent } from './alergia-drop/alergia-drop.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'create',
         component: CreateAlergiaComponent
+      },
+      {
+        path: 'drop',
+        component: AlergiaDropComponent
       }
     ]
   }
