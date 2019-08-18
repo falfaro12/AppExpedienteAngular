@@ -35,10 +35,15 @@ export class HorarioCreateComponent implements OnInit {
   }
   getSevicio() {
     return this.servicioService.getServicios(this.UsuarioActual.user.id).subscribe(
-      (respuesta: ServicioConsulta) => (this.servicio = respuesta),
+      (respuesta: ServicioConsulta) =>
+      {
+        this.servicio = respuesta;
+        console.log(this.servicio);
+      },
       error => {
         this.error = error;
         this.notificacion.msjError(this.error, 'Servicios');
+
       }
     );
   }

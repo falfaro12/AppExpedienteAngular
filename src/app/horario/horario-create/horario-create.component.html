@@ -14,13 +14,13 @@
         </div>
         <div>
           <label for="plataformas">Hora Cita</label>
-          <textarea
+          <input
             type="time"
             class="form-control"
             name="hora_cita"
             ngModel
             required
-          ></textarea>
+         />
         </div>
         <div class="form-group">
           <label for="plataformas">Servicio Consulta</label>
@@ -28,7 +28,7 @@
             <option
               *ngFor="let p of servicio?.servicio"
               [value]="p.id"
-              >{{ p.especialidad }}</option
+              >{{ p.especialidad.nombre }} {{ p.ubicacion }}</option
             >
           </select>
         </div>

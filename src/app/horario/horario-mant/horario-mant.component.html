@@ -26,15 +26,6 @@
             >Crear Horario</a
           >
         </li>
-        <li class="nav-item">
-          <a
-            class="nav-link "
-            [routerLink]="['/horarioM/drop']"
-            routerLinkActive="active"
-            [class.active]="router.url == '/horarioM/drop'"
-            >Lista de Alergias Borradas</a
-          >
-        </li>
       </ul>
       <app-horario-all *ngIf="router.url == '/horarioM'"> </app-horario-all>
       <router-outlet></router-outlet>
