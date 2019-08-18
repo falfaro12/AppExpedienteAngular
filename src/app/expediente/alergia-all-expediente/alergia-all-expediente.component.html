@@ -11,26 +11,26 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let alergia of datos?.Alergia">
-          <td>{{ alergia.nombre }}</td>
+        <tr *ngFor="let alerg of alergias">
+          <td>{{ alerg.nombre }}</td>
           <td>
             <span
               class="badge badge-info"
             >
-              {{ alergia.categoria }}
+              {{ alerg.categoria }}
             </span>
           </td>
           <td>
-            {{ alergia.reaccion }}
+            {{ alerg.reaccion }}
           </td>
           <td>
-            {{alergia.observaciones}}
+            {{ alerg.observaciones}}
           </td>
           <td>
             <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
             <!--    Es necesario retroceder un nivel
                Porque esta dentro de un componente que contiene rutas hijas -->
-            <button class="btn btn-info" (click)="linkEditar(alergia.id)">
+            <button class="btn btn-info" (click)="linkEditar(alerg.id)">
               Editar
             </button>
           </td>

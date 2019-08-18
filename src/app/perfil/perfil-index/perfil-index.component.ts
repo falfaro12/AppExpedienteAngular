@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PerfilService } from 'src/app/share/perfil.service';
 import { NotificacionService } from 'src/app/share/notificacion.service.service';
 import { AuthenticationServiceService } from 'src/app/share/authentication-service.service';
+import { ExpedienteService } from 'src/app/share/expediente.service';
 
 @Component({
   selector: 'app-perfil-index',
@@ -23,7 +24,8 @@ export class PerfilIndexComponent implements OnInit {
     private router: Router,
     private perfilService: PerfilService,
     private notificacion: NotificacionService ,
-    private autentification: AuthenticationServiceService
+    private autentification: AuthenticationServiceService,
+    private expedienteService: ExpedienteService
     ) {
       this.autentification.currentUser.subscribe(x => (this.UsuarioActual = x));
     }
@@ -55,12 +57,14 @@ export class PerfilIndexComponent implements OnInit {
     );
   }
   linkEditar(id: number) {
+
     this.router.navigate(['/perfil/detalle/', id], {
       relativeTo: this.route
     });
   }
   linkExp(id: number) {
-    this.router.navigate(['../../expediente/mantExpediente/', id]);
+    this.expedienteService.setCurrentExp(id);
+    this.router.navigate(['../../mantExpediente/']);
   }
 }
 // Funcion que se conecta con el servicio para invocar a la funcion de obtener restaurantes
