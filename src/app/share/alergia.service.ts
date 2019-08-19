@@ -114,4 +114,18 @@ export class AlergiaService {
   obtenerImagenService(rutaImagen) {
     return this.ServerUrl + 'expediente/obtenerImagenAlergia/' + rutaImagen;
   }
+  updateImagen(id: any, fd: FormData): Observable<Alergia> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+    .post<Alergia>(this.ServerUrl + 'expediente/agregaimagenActividad/' + id, fd, {headers})
+    .pipe(
+      retry(1)
+      , catchError(this.handler.handleError.bind(this)));
+  }
 }

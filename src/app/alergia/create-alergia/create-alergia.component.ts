@@ -6,7 +6,6 @@ import { Alergia } from 'src/app/share/models/alergia';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/share/notification.service';
 
-
 export interface ErrorEntidad {
   errors: { field: string; message: string }[];
 }
@@ -18,23 +17,24 @@ export interface ErrorEntidad {
 export class CreateAlergiaComponent implements OnInit {
   datos: Alergia;
   error: any;
+  imagen: File;
   constructor(
     private router: Router,
     private alergiaService: AlergiaService,
     private notification: NotificationService
-  ) { }
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  ngDoCheck(){}
+  ngDoCheck() {}
 
   onSubmit(obj: AlergiaEntidad) {
     return this.alergiaService.createAlergia(obj).subscribe(
       (respuesta: Alergia) => {
         this.datos = respuesta;
+        this.subirImagen(this.datos.Alergia[0].id);
         this.router.navigate(['/alergiaM/lista'], {
-          queryParams: {create: 'true'}
+          queryParams: { create: 'true' }
         });
       },
       error => {
@@ -43,8 +43,15 @@ export class CreateAlergiaComponent implements OnInit {
       }
     );
   }
-  onBack(){
+  onBack() {
     this.router.navigate(['/alergiaM']);
   }
-
+  obtenerImagen(event) {
+    this.imagen = event.target.files[0] as File;
+  }
+  subirImagen(id) {
+    const fd = new FormData();
+    fd.append('imagen', this.imagen);
+    this.alergiaService.updateImagen(id, fd).subscribe(data => {});
+  }
 }
