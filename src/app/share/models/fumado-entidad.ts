@@ -1,6 +1,6 @@
 export interface FumadoEntidad {
   id: number;
-  estadoFumado: number;
+  estadoFumado: string;
   tiempoInicio: string;
   frecuencia: number;
   observaciones: string;

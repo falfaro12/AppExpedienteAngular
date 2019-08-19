@@ -1,1 +1,44 @@
-<p>alcohol-all works!</p>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover" *ngIf='alcohol'>
+      <thead>
+        <tr>
+          <th>Estado</th>
+          <th>Tiempo de Inicio</th>
+          <th>Frecuencia(Veces por semana)</th>
+          <th>Tipo de Licor</th>
+          <th>Cantidad(En ml)</th>
+          <th>Observaciones</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <td>{{ alcohol.estadoAlcohol }}</td>
+          <td>
+            <span class="badge badge-info">
+              {{ alcohol.tiempoInicio }}
+            </span>
+          </td>
+          <td>
+            {{ alcohol.frecuencia }}
+          </td>
+          <td>
+            {{ alcohol.tipoLicor }}
+          </td>
+          <td>
+            {{ alcohol.cantidad }}
+          </td>
+          <td>
+            {{ alcohol.Observaciones }}
+          </td>
+          <td>
+            <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
+            <!--    Es necesario retroceder un nivel
+               Porque esta dentro de un componente que contiene rutas hijas -->
+            <button class="btn btn-info">
+              Editar
+            </button>
+          </td>
+
+

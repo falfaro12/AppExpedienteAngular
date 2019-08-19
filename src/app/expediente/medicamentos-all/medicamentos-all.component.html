@@ -1,1 +1,20 @@
-<p>medicamentos-all works!</p>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Medicamento</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let med of medicamentos">
+          <td>{{ med.nombre }}</td>
+          <td>
+            {{ med.descripcion}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

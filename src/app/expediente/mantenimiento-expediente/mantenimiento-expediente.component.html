@@ -33,6 +33,38 @@
             >Enfermedades</a
           >
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/mantExpediente/listaMedicamentosExp']"
+            routerLinkActive="active"
+            >Medicamentos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/mantExpediente/listaActividadExp']"
+            routerLinkActive="active"
+            >Actividades Físicas</a
+          >
+        </li>
+         <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/mantExpediente/listaFumado']"
+            routerLinkActive="active"
+            >Fumado</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/mantExpediente/listaAlcohol']"
+            routerLinkActive="active"
+            >Alcoholismo</a
+          >
+        </li>
       </ul>
       <app-detalle-expediente *ngIf="router.url == '/mantExpediente'">
       </app-detalle-expediente>

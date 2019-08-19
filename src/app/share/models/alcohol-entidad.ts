@@ -1,6 +1,6 @@
 export interface AlcoholEntidad {
   id: number;
-  estadoAlcohol: number;
+  estadoAlcohol: string;
   tiempoInicio: string;
   frecuencia: number;
   tipoLicor: string;

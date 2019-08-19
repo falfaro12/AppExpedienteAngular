@@ -1,1 +1,33 @@
-<p>fumado-all works!</p>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover" *ngIf="fumado">
+      <thead>
+        <tr>
+          <th>Estado</th>
+          <th>Tiempo de Inicio</th>
+          <th>Frecuencia(Promedio por semana)</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ fumado.estadoFumado }}</td>
+          <td>
+            <span
+              class="badge badge-info"
+            >
+            {{ fumado.tiempoInicio }}
+            </span>
+          </td>
+          <td>{{ fumado.frecuencia }}</td>
+          <td>
+            <span class="badge badge-info">
+              {{fumado.observaciones}}
+            </span>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

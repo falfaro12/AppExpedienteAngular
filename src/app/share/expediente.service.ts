@@ -9,6 +9,8 @@ import { retry, catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ExpedienteEntidad } from './models/expediente-entidad';
 import { Expediente } from './models/expediente';
+import { Alcohol } from './models/alcohol';
+import { Fumado } from './models/fumado';
 import { CustomHandlerErrorService } from './custom-handler-error.service';
 import { AuthenticationServiceService } from './authentication-service.service';
 import { UsuarioLogin } from './models/usuario-login';
@@ -79,5 +81,49 @@ export class ExpedienteService {
       .pipe(catchError(this.handler.handleError.bind(this)));
 
   }
-  
+
+  getEnfermedadesExp(): Observable<Expediente> {
+    // tslint:disable-next-line: radix
+    this.expediente_id = parseInt(localStorage.getItem('expediente_id'));
+    let headers = new HttpHeaders();
+    if(this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .get<Expediente>(this.ServerUrl + 'expediente/listaDeseasesExpediente/' + this.expediente_id, { headers })
+      .pipe(catchError(this.handler.handleError.bind(this)));
+
+  }
+
+  getMedicamentosExp(): Observable<Expediente> {
+    // tslint:disable-next-line: radix
+    this.expediente_id = parseInt(localStorage.getItem('expediente_id'));
+    let headers = new HttpHeaders();
+    if(this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .get<Expediente>(this.ServerUrl + 'expediente/listaMedicamentosExpediente/' + this.expediente_id, { headers })
+      .pipe(catchError(this.handler.handleError.bind(this)));
+
+  }
+
+  getFumado(){
+    return this.http
+      .get<Alcohol>(this.ServerUrl + 'expediente/fumado/show/' + this.expediente_id)
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
+  getAlcohol(){
+    return this.http
+      .get<Fumado>(this.ServerUrl + 'expediente/alcohol/show/' + this.expediente_id)
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
 }

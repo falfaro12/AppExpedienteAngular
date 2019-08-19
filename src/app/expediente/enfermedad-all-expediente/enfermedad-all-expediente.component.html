@@ -1,1 +1,20 @@
-<p>enfermedad-all-expediente works!</p>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Enfermedad</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let enfermedad of deseases">
+          <td>{{ enfermedad.nombre }}</td>
+          <td>
+            {{ enfermedad.observaciones}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

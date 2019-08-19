@@ -45,7 +45,7 @@ const routes: Routes = [
         component: EnfermedadAllExpedienteComponent
       },
       {
-        path: 'listaActividad',
+        path: 'listaActividadExp',
         component: ActividadAllExpedienteComponent
       },
       {
@@ -69,7 +69,7 @@ const routes: Routes = [
         component: FumadoAllComponent,
       },
       {
-        path: 'listaMedicamentos',
+        path: 'listaMedicamentosExp',
         component: MedicamentosAllComponent
       },
       {

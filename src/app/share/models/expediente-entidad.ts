@@ -16,7 +16,7 @@ export interface ExpedienteEntidad {
   idalcoholismo: number;
   alcohol: AlcoholEntidad;
   alergias: AlergiaEntidad[];
-  deseaes: DeseaseEntidad[];
+  deseases: DeseaseEntidad[];
   medicamentos: MedicamentoEntidad[];
   activities: ActividadEntidad[];
   cirugias: CirugiaEntidad[];
