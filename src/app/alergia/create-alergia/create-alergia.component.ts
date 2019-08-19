@@ -32,7 +32,7 @@ export class CreateAlergiaComponent implements OnInit {
     return this.alergiaService.createAlergia(obj).subscribe(
       (respuesta: Alergia) => {
         this.datos = respuesta;
-        this.subirImagen(this.datos.Alergia[0].id);
+        this.subirImagen(this.datos.alergia[0].id);
         this.router.navigate(['/alergiaM/lista'], {
           queryParams: { create: 'true' }
         });
@@ -46,7 +46,7 @@ export class CreateAlergiaComponent implements OnInit {
   onBack() {
     this.router.navigate(['/alergiaM']);
   }
-  obtenerImagen(event) {
+  obtenerImagen( event ) {
     this.imagen = event.target.files[0] as File;
   }
   subirImagen(id) {
