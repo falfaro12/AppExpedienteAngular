@@ -33,7 +33,7 @@ export class UpdateAlergiaComponent implements OnInit {
     this.alergiaService.getAlergia(id).subscribe(
       (respuesta: Alergia) => {
         this.datos = respuesta;
-        this.alergia = this.datos.Alergia[0];
+        this.alergia = this.datos.alergia[0];
       },
       error => (this.error = error)
     );

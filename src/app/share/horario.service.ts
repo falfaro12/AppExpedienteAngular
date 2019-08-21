@@ -43,5 +43,31 @@ export class HorarioService {
     return this.http
     .post<HorarioEntidad>(this.ServerUrl + 'expediente/medico/agregaHorario', horario, { headers })
     .pipe(catchError(this.handler.handleError.bind(this)));
+
+  }
+
+  getHorariosSinAsignar(): Observable<Horario> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .get<Horario>(this.ServerUrl + 'expediente/medico/listaHorariosSinasignar', {headers})
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+  dropHorario(id: any): Observable<void> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+    .delete<void>(this.ServerUrl + 'expediente/medico/horario/' + id, {headers} )
+    .pipe(catchError(this.handler.handleError.bind(this)));
   }
 }
