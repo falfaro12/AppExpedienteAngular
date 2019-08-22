@@ -47,6 +47,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./horario/horario.module').then(mod => mod.HorarioModule)
   },
+  {
+    path: 'agenda',
+    loadChildren: () =>
+      import('./agenda/agenda.module').then(mod => mod.AgendaModule)
+  },
   { path: "", redirectTo: "", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }
 

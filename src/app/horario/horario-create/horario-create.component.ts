@@ -51,7 +51,7 @@ export class HorarioCreateComponent implements OnInit {
     return this.horarioService.createServicio(obj).subscribe(
       (respuesta: Horario) => {
         this.datos = respuesta;
-        this.router.navigate(['/MantServicioConsulta/lista'], {
+        this.router.navigate(['/horarioM/lista'], {
           queryParams: { registrarHorario: 'true' }
         });
       },
@@ -62,6 +62,6 @@ export class HorarioCreateComponent implements OnInit {
     );
   }
   onBack() {
-    this.router.navigate(['/MantServicioConsulta']);
+    this.router.navigate(['/horarioM/lista']);
   }
 }

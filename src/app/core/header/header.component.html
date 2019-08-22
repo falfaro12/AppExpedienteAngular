@@ -20,7 +20,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="UsuarioActual?.user.rol_id == null">
           <a
             class="nav-link"
             [routerLink]="['home/registrar']"
@@ -95,6 +95,14 @@
               >Horario</a
             >
           </div>
+        </li>
+        <li class="nav-item" *ngIf="UsuarioActual?.user.rol_id == 2">
+          <a
+            class="nav-link"
+            [routerLink]="['agendaMedico/agenda']"
+            routerLinkActive="active"
+            >Agendas</a
+          >
         </li>
         <!--Mantenimientos usuario paciente -->
         <li class="nav-item dropdown" *ngIf="UsuarioActual?.user.rol_id == 3">

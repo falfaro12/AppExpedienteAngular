@@ -35,33 +35,37 @@ export class HorarioAllComponent implements OnInit {
     }
 
     if (notieM) {
-      this.notification.msjSuccess(
-        'Horario Eliminado!',
-        'Eliminar'
-      );
+      this.notification.msjSuccess('Horario Eliminado!', 'Eliminar');
     }
-    // suscripcion para el consumo del servicio
-    this.horarioServicie
-      .getHorariosSinAsignar()
-      .subscribe(
-        (respuesta: Horario) => {
-          (this.datos = respuesta);
-          this.horarios = this.datos.horario;
-          console.log(this.horarios);
-        },
-        error => (this.error = error)
-      );
+    this.mostrarHorarios();
   }
 
+  mostrarHorarios() {
+    // suscripcion para el consumo del servicio
+    this.horarioServicie.getHorariosSinAsignar().subscribe(
+      (respuesta: Horario) => {
+        this.datos = respuesta;
+        this.horarios = this.datos.horarios;
+        console.log(this.horarios);
+      },
+      error => (this.error = error)
+    );
+  }
   linkEliminar(id: number) {
     return this.horarioServicie.dropHorario(id).subscribe(
       (respuesta: void) => {
         this.router.navigate(['/horarioM/lista'], {
-          queryParams: {deleteHorario: 'true'}
+          queryParams: { deleteHorario: 'true' }
         });
+      },
+      error => {},
+      () => {
+        this.mostrarHorarios();
+        this.notification.msjSuccess(
+          'Eliminar Horario',
+          'Horario eliminado exitosamente'
+        );
       }
     );
-
   }
-
 }

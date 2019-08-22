@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Especialidad</th>
+          <th>Consultorio</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Paciente</th>
+          <th>Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let h of datos?.horarios">
+            <td>
+              {{ h.servicio__consultas.especialidad.descripcion }}
+            </td>
+            <td>
+              {{ h.servicio__consultas.ubicacion }}
+            </td>
+          <td>
+            {{ h.Fecha_cita | date: 'dd/MM/yyyy' }}
+          </td>
+          <td>
+            {{h.hora_cita }}
+          </td>
+          <td >
+            <span class="badge badge-info" *ngIf="h.agenda != null">
+                {{
+                  h.agenda.perfil.nombre + ' ' + h.agenda.perfil.primerApellido + ' ' + h.agenda.perfil.segundoApellido
+                }}
+            </span>
+            <span *ngIf="h.agenda === null" class="badge badge-info" >
+                No ha sido registrada por ningún paciente
+            </span>
+          </td>
+          <td>
+            <button
+            type="button"
+            class="btn btn-primary"
+            style="border-radius: .25rem; cursor: pointer;" (click)="onSeleccionaAgenda(h.id)">
+            Detalle <i class="fas fa-info-circle"></i>
+          </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

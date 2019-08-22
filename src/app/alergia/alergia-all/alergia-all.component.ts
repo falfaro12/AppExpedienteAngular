@@ -48,12 +48,11 @@ export class AlergiaAllComponent implements OnInit {
         'Restaurar Alergia'
       );
     }
-    if (notieM) {
-      this.notification.msjSuccess(
-        'Alergia Eliminada!',
-        'Eliminar'
-      );
-    }
+    // suscripcion para el consumo del servicio
+    this.mostrarAlergias();
+  }
+
+  mostrarAlergias() {
     // suscripcion para el consumo del servicio
     this.alergiaService
       .getAlergias()
@@ -71,11 +70,21 @@ export class AlergiaAllComponent implements OnInit {
         this.router.navigate(['/alergiaM/lista'], {
           queryParams: {delete: 'true'}
         });
+      },
+      error => {},
+      () => {
+        this.mostrarAlergias();
+        this.notification.msjSuccess(
+          'Eliminar Alergia',
+          'Alergia eliminada exitosamente'
+        );
       }
     );
 
   }
-  obtenerImagen(ruta_imagen: string) {
+
+
+  obtenerImagen( ruta_imagen: string) {
     return this.alergiaService.obtenerImagenService(ruta_imagen);
   }
 }

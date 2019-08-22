@@ -1,0 +1,83 @@
+<div class="tituloBanner">
+  <div class="col-lg-12 mx-auto">
+    <div class="site-heading">
+      <h1>Detalle Agenda </h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="card col-lg-12" *ngIf="horario">
+      <div class="card-body">
+        <h5 class="card-title">
+          Detalle Servicio Consulta:
+        </h5>
+        <p class="card-text">
+          Especialidad:
+          {{ horario.servicio__consultas.especialidad.descripcion }}
+        </p>
+        <p class="card-text">
+          Precio: ₡ {{ horario.servicio__consultas.precio | currency: '' }}
+        </p>
+        <p class="card-text">
+          Ubicación: {{ horario.servicio__consultas.ubicacion }}
+        </p>
+       
+        <h5 class="card-title">
+          Detalle de la cita:
+        </h5>
+
+        <ul class="list-group">
+          <li class="list-group-item">
+             Fecha de la cita:
+            <span>{{ horario.Fecha_cita | date: 'dd-MM-yyyy' }}</span>
+          </li>
+          <li class="list-group-item">
+           Hora de la cita:
+            <span>{{ horario.hora_cita }}</span>
+          </li>
+          <li class="list-group-item">
+            Estado:
+            <span>{{
+              horario.estado
+                ? 'No asignada'
+                : 'Asignada'
+            }}</span>
+          </li>
+        </ul>
+        <hr />
+        <div *ngIf="horario.agenda != null">
+          <h5 class="card-title">
+            Paciente:
+          </h5>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <i class="fas fa-user"></i> Nombre:
+              <span>{{
+                horario.agenda.perfil.nombre +
+                  ' ' +
+                  horario.agenda.perfil.primerApellido +
+                  ' ' +
+                  horario.agenda.perfil.segundoApellido
+              }}</span>
+            </li>
+            <li class="list-group-item">
+              <i class="far fa-id-card"></i> Identificación:
+              <span>{{ horario.agenda.perfil.cedula }}</span>
+            </li>
+            <li class="list-group-item">
+              <i class="fas fa-phone"></i>
+              Telefono:
+              <span>{{ horario.agenda.perfil.numTelefonico }}</span>
+            </li>
+          </ul>
+
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-outline-secondary" (click)="onBack()">
+          <i class="fa fa-chevron-left"></i> Regresar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,5 +11,6 @@ export interface ServicioConsultasEntidad {
   user: UserEntidad;
   created_at: Date;
   updated_at: Date;
+  
 
 }
