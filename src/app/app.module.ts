@@ -20,6 +20,7 @@ import { ActividadModule } from './actividad/actividad.module';
 import { HorarioModule } from './horario/horario.module';
 import { AgendaModule } from './agenda/agenda.module';
 import { CitaModule } from './cita/cita.module';
+import { CompartirModule } from './compartir/compartir.module';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { CitaModule } from './cita/cita.module';
     AgendaModule,
     CitaModule,
     HorarioModule,
+    CompartirModule,
     HomeModule,
     UsuarioModule,
     ServicioConsultaModule,
@@ -52,7 +54,7 @@ import { CitaModule } from './cita/cita.module';
     ActividadModule,
     HorarioModule,
     AgendaModule,
-    CitaModule
+    CitaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

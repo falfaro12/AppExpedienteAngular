@@ -1,0 +1,116 @@
+<div class="container-fluid">
+    <div
+      class="row box mt-0"
+      style="
+  background: white;
+  border-top: 2px solid #34d5de;"
+    >
+      <form #form="ngForm" class="w-100" (ngSubmit)="onSubmit(form.value)">
+        <div class="col-12 mt-4 text-center"></div>
+
+        <div class="text-center mb-5">
+          <h2>Selecciona con quién deseas compartir el expediente</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-7 col-md-7 col-sm-12">
+            <input type="hidden" name="perfil_id" [(ngModel)]="perfilID" />
+            <div class="form-group input-group my-lg-5">
+              <label class="control-label col-sm-3"
+                >Pacientes y Doctores registrados
+                <span class="text-danger">*</span>
+              </label>
+              <div class="col-md-8 col-sm-9">
+                <select
+                  class="form-control"
+                  title="Pacientes"
+                  ngModel
+                  required
+                  (change)="onChange($event.target.value)"
+                  id="user_id"
+                  name="user_id"
+                >
+                  <option *ngFor="let p of pacientes?.Medicos" [value]="p.id">
+                    {{
+                      p.nombre +
+                        ' ' +
+                        p.primerApellido +
+                        ' ' +
+                        p.segundoApellido
+                    }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group row">
+                  <div class="col-md-12 col-sm-12 d-inline-flex">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      style="cursor: pointer;
+                        border-radius: 0.4em;"
+                      id="compartir"
+                    >
+                      Compartir el expediente
+                    </button>
+                    <button
+                      type="button"
+                      (click)="onBack()"
+                      class="btn btn-secondary ml-3"
+                      style="cursor: pointer;
+                        border-radius: 0.4em;"
+                      id="volver"
+                    >
+                      Volver atrás <i class="fas fa-undo-alt"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-5 col-md-5 col-sm-12"
+            *ngIf="pacienteSelected == undefined"
+          >
+            <h3 class="alert alert-warning my-lg-5">
+              No ha seleccionado ningún paciente aún
+            </h3>
+          </div>
+          <div
+            class="col-lg-5 col-md-5 col-sm-12"
+            *ngIf="pacienteSelected != undefined"
+          >
+            <div class="card text-center">
+              <div class="card-header text-white bg-primary h4 mb-lg-0">
+                Información del paciente
+              </div>
+              <div class="card-body bg-white p-lg-2">
+                <h5 class="card-title">Nombre:</h5>
+                <p class="card-text">
+                  {{
+                    pacienteSelected.nombre +
+                      ' ' +
+                      pacienteSelected.apellido1 +
+                      ' ' +
+                      pacienteSelected.apellido2
+                  }}
+                </p>
+                <h5 class="card-title">Correo:</h5>
+                <p class="card-text">
+                  {{ pacienteSelected.email }}
+                </p>
+              </div>
+              <div
+                class="card-footer text-muted"
+                style="background: lightgrey;"
+              >
+                Paciente registrado
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
