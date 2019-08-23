@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Actividad } from '../../share/models/actividad';
 import { ActividadEntidad } from '../../share/models/actividad-entidad';
-import { ActividadService } from '../../share/actividad.service';
+import { ExpedienteService } from '../../share/expediente.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/share/notification.service';
+import { ExpedienteEntidad } from 'src/app/share/models/expediente-entidad';
+import { Expediente } from '../../share/models/expediente';
 
 @Component({
   selector: 'app-actividad-all-expediente',
@@ -11,13 +13,14 @@ import { NotificationService } from 'src/app/share/notification.service';
   styleUrls: ['./actividad-all-expediente.component.css']
 })
 export class ActividadAllExpedienteComponent implements OnInit {
-  datos: Actividad;
-  actividades: ActividadEntidad;
+  datos: Expediente;
+  expediente: ExpedienteEntidad;
+  actividades: ActividadEntidad[];
   error: {};
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private actividadService: ActividadService,
+    private expedienteService: ExpedienteService,
     private notification: NotificationService
   ) { }
 
@@ -30,14 +33,21 @@ export class ActividadAllExpedienteComponent implements OnInit {
       notifM = params.update || false;
     });
     if (notifC) {
-      this.notification.msjSuccess('Alergia creada!', 'Crear Alergia');
+      this.notification.msjSuccess('Actividad creada!', 'Crear Actividad');
     }
     if (notifM) {
       this.notification.msjSuccess(
-        'Alergia actualizada!',
-        'Actualizar Alergia'
+        'Actividad actualizada!',
+        'Actualizar Actividad'
       );
     }
+    this.expedienteService.getActividades().subscribe(
+      (respuesta: Expediente) => {
+        this.datos = respuesta;
+        this.expediente = this.datos.Expediente[0];
+        this.actividades = this.expediente.activities;
+      }
+    );
   }
   linkEditar(id: number) {
     this.router.navigate(['../updateActividadExp/', id], {relativeTo: this.route});

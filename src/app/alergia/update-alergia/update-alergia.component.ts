@@ -52,6 +52,6 @@ export class UpdateAlergiaComponent implements OnInit {
     );
   }
   onBack() {
-    this.router.navigate(['/alergiaM']);
+    this.router.navigate(['/mantExpediente/listaAlergiasExp']);
   }
 }
