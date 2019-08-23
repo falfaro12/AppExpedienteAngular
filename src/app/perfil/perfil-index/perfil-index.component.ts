@@ -62,9 +62,10 @@ export class PerfilIndexComponent implements OnInit {
       relativeTo: this.route
     });
   }
+
   linkExp(id: number) {
     this.expedienteService.setCurrentExp(id);
-    this.router.navigate(['../../mantExpediente/']);
+    this.router.navigate(['Compartir/compartirExpediente/',id]);
   }
 }
 // Funcion que se conecta con el servicio para invocar a la funcion de obtener restaurantes

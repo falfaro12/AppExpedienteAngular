@@ -32,7 +32,11 @@
           <td>
             {{expediente.alcohol.estadoAlcohol}}
           </td>
-
+          <td>
+              <button class="btn btn-info" (click)="linkEditar(expediente.id)">
+                CompartirExpediente
+              </button>
+            </td>
         </tr>
       </tbody>
     </table>

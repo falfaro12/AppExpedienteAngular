@@ -22,12 +22,16 @@ export class DetalleExpedienteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+   
     this.expedienteService.getExpediente().subscribe(
       (respuesta: Expediente) => {
         this.datos = respuesta;
         this.expediente = this.datos.Expediente[0];
        },
        error => (this.error = error));
+  }
+  linkCompartir(id: number) {
+    this.router.navigate(['/alergia/update/', id], { relativeTo: this.route });
   }
 
 }
