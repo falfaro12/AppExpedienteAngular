@@ -7,8 +7,10 @@ export interface HorarioEntidad {
   Fecha_cita: Date;
   hora_cita: Time;
   estado: boolean;
+
   id_servicioConsulta: number;
   servicio__consultas: ServicioConsultasEntidad;
+
   agenda: AgendaEntidad;
   created_at: Date;
   updated_at: Date;

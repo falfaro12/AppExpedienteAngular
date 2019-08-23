@@ -27,7 +27,7 @@
             {{ agenda.horario.servicio__consultas.ubicacion }}
           </td>
           <td>
-            {{ agenda.horario.Fecha_cita | date: 'dd/MM/yyyy' }}
+            {{ agenda.horario.id | date: 'dd/MM/yyyy' }}
           </td>
           <td>
             {{ agenda.horario.hora_cita }}
@@ -50,7 +50,7 @@
             <button
               type="button"
               class="btn btn-info"
-              (click)="onSeleccionaAgenda(h.id)"
+              (click)="onSeleccionaAgenda(agenda.id)"
             >
               Detalle
             </button>

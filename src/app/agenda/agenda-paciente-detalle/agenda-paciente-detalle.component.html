@@ -1,0 +1,75 @@
+<div class="tituloBanner">
+    <div class="col-lg-12 mx-auto">
+      <div class="site-heading">
+        <h1>Detalle Agenda </h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="card col-lg-12" *ngIf="agenda">
+        <div class="card-body">
+          <h5 class="card-title">
+            Detalle Servicio Consulta:
+          </h5>
+          <p class="card-text">
+            Especialidad:
+            {{ agenda.horario.servicio__consultas.especialidad.nombre }}
+          </p>
+          <p class="card-text">
+            Precio: ₡ {{ agenda.horario.servicio__consultas.precio | currency: '' }}
+          </p>
+          <p class="card-text">
+            Ubicación: {{agenda.horario.servicio__consultas.ubicacion }}
+          </p>
+
+          <h5 class="card-title">
+            Detalle de la cita:
+          </h5>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+               Fecha de la cita:
+              <span>{{agenda.horario.Fecha_cita | date: 'dd-MM-yyyy' }}</span>
+            </li>
+            <li class="list-group-item">
+             Hora de la cita:
+              <span>{{ agenda.horario.hora_cita }}</span>
+            </li>
+          </ul>
+          <hr />
+          <div *ngIf="agenda != null">
+            <h5 class="card-title">
+              Paciente:
+            </h5>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <i class="fas fa-user"></i> Nombre:
+                <span>{{
+                    agenda.profile.nombre +
+                    ' ' +
+                   agenda.profile.primerApellido +
+                    ' ' +
+                    agenda.profile.segundoApellido
+                }}</span>
+              </li>
+              <li class="list-group-item">
+                <i class="far fa-id-card"></i> Identificación:
+                <span>{{ agenda.profile.cedula }}</span>
+              </li>
+              <li class="list-group-item">
+                <i class="fas fa-phone"></i>
+                Telefono:
+                <span>{{ agenda.profile.numTelefonico }}</span>
+              </li>
+            </ul>
+
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-outline-secondary" (click)="onBack()">
+            <i class="fa fa-chevron-left"></i> Regresar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

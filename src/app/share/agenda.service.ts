@@ -99,4 +99,22 @@ export class AgendaService {
         catchError(this.handler.handleError.bind(this))
       );
   }
+  getDetalleAgendaPaciente(id: any): Observable<Agenda> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .get<Agenda>(
+        this.ServerUrl + 'expediente/medico/AgendaPaciente/' + id,
+        { headers }
+      )
+      .pipe(
+        retry(1),
+        catchError(this.handler.handleError.bind(this))
+      );
+  }
 }

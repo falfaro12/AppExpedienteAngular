@@ -8,13 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NotificacionService } from 'src/app/share/notificacion.service.service';
 
 @Component({
-  selector: 'app-agenda-paciente',
-  templateUrl: './agenda-paciente.component.html',
-  styleUrls: ['./agenda-paciente.component.css']
+  selector: 'app-agenda-paciente-detalle',
+  templateUrl: './agenda-paciente-detalle.component.html',
+  styleUrls: ['./agenda-paciente-detalle.component.css']
 })
-export class AgendaPacienteComponent implements OnInit {
+export class AgendaPacienteDetalleComponent implements OnInit {
   datos: Agenda;
-  agenda: AgendaEntidad[];
+  agenda: AgendaEntidad;
   error: {};
   currentUser: UsuarioLogin;
 
@@ -26,32 +26,30 @@ export class AgendaPacienteComponent implements OnInit {
     private notificacion: NotificacionService
   ) {
     this.autentificacion.currentUser.subscribe(x => (this.currentUser = x));
-
+    if (this.currentUser.user.rol_id !== 3) {
+      this.router.navigate(['/']);
+    }
   }
-
-
-
-
   ngOnInit() {
-    this.getAgendas();
-  }
+    // tslint:disable-next-line: prefer-const
+    let id = +this.route.snapshot.paramMap.get('id');
 
-  getAgendas() {
-    this.agendaService.getAgendaPerfil().subscribe(
+    // suscripción para uso del servicio
+    this.agendaService.getDetalleAgendaPaciente(id).subscribe(
       (respuesta: Agenda) => {
         this.datos = respuesta;
-        this.agenda = this.datos.citas;
-        console.log(this.agenda);
+        this.agenda = this.datos.citas[0];
       },
       error => (this.error = error)
     );
   }
 
-  onSeleccionaAgenda(id: any) {
-    this.router.navigate(['/agendaPaciente/detalleAgendePaciente/' + id], {
-      relativeTo: this.route
-    });
+  ngDoCheck() {
+    if (this.datos) {
+      this.agenda = this.datos.citas[0];
+    }
+  }
+  onBack() {
+    this.router.navigate(['/agendaPaciente/agendaP']);
   }
 }
-
-

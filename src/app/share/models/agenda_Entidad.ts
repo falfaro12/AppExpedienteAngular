@@ -11,6 +11,7 @@ export interface AgendaEntidad {
   profile: PerfilEntidad;
   id_perfil: number;
 
+
   created_at: Date;
   updated_at: Date;
 

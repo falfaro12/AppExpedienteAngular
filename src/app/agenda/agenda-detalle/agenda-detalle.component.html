@@ -22,7 +22,7 @@
         <p class="card-text">
           Ubicación: {{ horario.servicio__consultas.ubicacion }}
         </p>
-       
+
         <h5 class="card-title">
           Detalle de la cita:
         </h5>
@@ -54,21 +54,21 @@
             <li class="list-group-item">
               <i class="fas fa-user"></i> Nombre:
               <span>{{
-                horario.agenda.perfil.nombre +
+                horario.agenda.profile.nombre +
                   ' ' +
-                  horario.agenda.perfil.primerApellido +
+                  horario.agenda.profile.primerApellido +
                   ' ' +
-                  horario.agenda.perfil.segundoApellido
+                  horario.agenda.profile.segundoApellido
               }}</span>
             </li>
             <li class="list-group-item">
               <i class="far fa-id-card"></i> Identificación:
-              <span>{{ horario.agenda.perfil.cedula }}</span>
+              <span>{{ horario.agenda.profile.cedula }}</span>
             </li>
             <li class="list-group-item">
               <i class="fas fa-phone"></i>
               Telefono:
-              <span>{{ horario.agenda.perfil.numTelefonico }}</span>
+              <span>{{ horario.agenda.profile.numTelefonico }}</span>
             </li>
           </ul>
 
