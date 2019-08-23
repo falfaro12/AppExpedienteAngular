@@ -8,6 +8,8 @@ import { CustomHandlerErrorService } from './custom-handler-error-service.servic
 import { Horario } from './models/horario';
 import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { AgendaEntidad } from './models/agenda_Entidad';
+import { Agenda } from './models/agenda';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,25 @@ export class AgendaService {
       x => (this.currentUser = x)
     );
   }
+  storeAgenda(agenda: AgendaEntidad): Observable<void> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .post<Agenda>(
+        this.ServerUrl + 'expediente/cita/agregaAgenda',
+        agenda,
+        {
+          headers
+        }
+      )
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
 
   getAgendaMedico(): Observable<Horario> {
     let headers = new HttpHeaders();
@@ -46,6 +67,20 @@ export class AgendaService {
       })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+  getAgendaPerfil(): Observable<Agenda> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .get<Agenda>(this.ServerUrl + 'expediente/medico/horariopaciente/' + this.currentUser.user.id, {
+        headers
+      })
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
   getDetalleAgenda(id: any): Observable<Horario> {
     let headers = new HttpHeaders();
     if (this.currentUser) {
@@ -57,6 +92,24 @@ export class AgendaService {
     return this.http
       .get<Horario>(
         this.ServerUrl + 'expediente/medico/detalleAgendaMedico/' + id,
+        { headers }
+      )
+      .pipe(
+        retry(1),
+        catchError(this.handler.handleError.bind(this))
+      );
+  }
+  getDetalleAgendaPaciente(id: any): Observable<Agenda> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .get<Agenda>(
+        this.ServerUrl + 'expediente/medico/AgendaPaciente/' + id,
         { headers }
       )
       .pipe(

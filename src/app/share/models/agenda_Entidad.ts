@@ -8,8 +8,9 @@ export interface AgendaEntidad {
   horario: HorarioEntidad;
   id_Horario: number;
 
-  perfil: PerfilEntidad;
+  profile: PerfilEntidad;
   id_perfil: number;
+
 
   created_at: Date;
   updated_at: Date;

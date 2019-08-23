@@ -133,6 +133,7 @@
             >
           </div>
         </li>
+
         <li class="nav-item" *ngIf="UsuarioActual?.user.rol_id == 3">
           <a
             class="nav-link"
@@ -141,26 +142,36 @@
             >Sacar Citas</a
           >
         </li>
+        <li class="nav-item" *ngIf="UsuarioActual?.user.rol_id == 3">
+            <a
+              class="nav-link"
+              [routerLink]="['agendaPaciente/agendaP']"
+              routerLinkActive="active"
+              >Agendas</a
+            >
+          </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <div class="form-group mb-2">
           <input
+          *ngIf="UsuarioActual?.user.rol_id != null"
             class="form-control form-control-sm"
             type="text"
             readonly
             name="nombreUsuario"
             aria-label="Usuario"
-            *ngIf="UsuarioActual?.user"
             [(ngModel)]="UsuarioActual.user.nombre"
           />
         </div>
         <a
+         *ngIf="UsuarioActual?.user.rol_id == null"
           class="btn btn-dark btn-sm"
           [routerLink]="['home/inicio']"
           routerLinkActive="active"
           >Login</a
         >
         <a
+        *ngIf="UsuarioActual?.user.rol_id != null"
           class="btn btn-light btn-sm"
           (click)="logout()"
           routerLinkActive="active"

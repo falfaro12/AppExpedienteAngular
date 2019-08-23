@@ -8,6 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioConsultaService } from 'src/app/share/servicio-consulta.service';
 import { Horario } from 'src/app/share/models/horario';
 import { HorarioEntidad } from 'src/app/share/models/horario-entidad';
+import { AgendaService } from 'src/app/share/agenda.service';
+import { Agenda } from 'src/app/share/models/agenda';
+import { AgendaEntidad } from 'src/app/share/models/agenda_Entidad';
+import { NotificationService } from 'src/app/share/notification.service';
+import { Perfil } from 'src/app/share/models/Perfil';
+import { PerfilEntidad } from 'src/app/share/models/Perfil-entidad';
+import { PerfilService } from 'src/app/share/perfil.service';
 
 @Component({
   selector: 'app-horario-detalle',
@@ -19,6 +26,10 @@ export class HorarioDetalleComponent implements OnInit {
   horario: HorarioEntidad[];
   medico: UserEntidad;
   servicio: ServicioConsultasEntidad;
+  perfildato: Perfil;
+  perfiles: PerfilEntidad[];
+  agenda: AgendaEntidad;
+  id: any;
 
   error: {};
 
@@ -27,7 +38,10 @@ export class HorarioDetalleComponent implements OnInit {
     private autentificacion: AuthenticationServiceService,
     private route: ActivatedRoute,
     private router: Router,
-    private servicioCService: ServicioConsultaService
+    private servicioCService: ServicioConsultaService,
+    private agendaService: AgendaService,
+    private notification: NotificationService,
+    private perfilService: PerfilService
   ) {
     this.autentificacion.currentUser.subscribe(x => (this.currentUser = x));
     if (this.currentUser.user.rol_id !== 3) {
@@ -48,6 +62,15 @@ export class HorarioDetalleComponent implements OnInit {
       },
       error => (this.error = error)
     );
+    // suscripción para uso del servicio
+    this.perfilService.getPerfilesAsociados().subscribe(
+      (respuesta: Perfil) => {
+        this.perfildato = respuesta;
+        this.perfiles = this.perfildato.Perfil;
+        console.log(this.perfiles);
+      },
+      error => (this.error = error)
+    );
   }
 
   ngDoCheck() {
@@ -61,11 +84,19 @@ export class HorarioDetalleComponent implements OnInit {
       relativeTo: this.route
     });
   }
-
-
-  onSeleccionaHorario(id: any) {
-    this.router.navigate(['/cita/confirma_cita/' + id], {
-      relativeTo: this.route
-    });
+  onSubmit(obj: AgendaEntidad) {
+    return this.agendaService.storeAgenda(obj).subscribe(
+      (respuesta: void) => {
+        this.router.navigate(['/cita/SeleccionaMedico'], {
+          queryParams: { createCita: 'true' }
+        });
+      },
+      error => {
+        this.error = error;
+        this.notification.msjValidacion(this.error);
+      }
+    );
   }
+
+
 }

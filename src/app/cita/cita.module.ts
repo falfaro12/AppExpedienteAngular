@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HorarioDetalleComponent } from './horario-detalle/horario-detalle.component';
 
 
+
 @NgModule({
   declarations: [MedicosIndexComponent, HorarioDetalleComponent],
   imports: [
