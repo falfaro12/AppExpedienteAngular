@@ -19,6 +19,7 @@ import { Alergia } from './models/alergia';
 import { AlergiaEntidad } from './models/alergia-entidad';
 import { Actividad } from './models/actividad';
 import { ActividadEntidad } from './models/actividad-entidad';
+import { ActividadPivotEntidad } from './models/actividad-pivot-entidad';
 
 
 @Injectable({
@@ -70,6 +71,20 @@ export class ExpedienteService {
       .get<Expediente>(this.ServerUrl + 'expediente/mostrarExpediente/' + this.expediente_id, { headers })
       .pipe(catchError(this.handler.handleError.bind(this)));
 
+  }
+
+  updateExpediente(expediente: ExpedienteEntidad): Observable<Expediente>{
+    // tslint:disable-next-line: radix
+    this.expediente_id = parseInt(localStorage.getItem('expediente_id'));
+    let headers = new HttpHeaders();
+    if(this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .put<Expediente>(this.ServerUrl + 'expediente/actualizarExpediente/' + this.expediente_id, expediente, {headers});
   }
 
   getAlergiasExp(): Observable<Expediente> {
@@ -134,6 +149,7 @@ export class ExpedienteService {
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
 
+
   updateAlcohol(id: any, alcohol: AlcoholEntidad): Observable<Alcohol>{
     let headers = new HttpHeaders();
     if (this.currentUser) {
@@ -144,6 +160,21 @@ export class ExpedienteService {
     }
     return this.http
       .put<Alcohol>(this.ServerUrl + 'expediente/alcohol/' + id, alcohol, {headers})
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
+  updateActivitiesExp(actividad: ActividadEntidad): Observable<Actividad>{
+    // tslint:disable-next-line: radix
+    this.expediente_id = parseInt(localStorage.getItem('expediente_id'));
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .put<Actividad>(this.ServerUrl + 'expediente/actividad/' + this.expediente_id, actividad, {headers})
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
 
@@ -161,5 +192,20 @@ export class ExpedienteService {
       .get<Expediente>(this.ServerUrl + 'expediente/listaActividadesExpediente/' + this.expediente_id, { headers })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+
+  getActividad($id: number){
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .get<Actividad>(this.ServerUrl + 'expediente/actividad/' + $id, {headers})
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
+
 
 }

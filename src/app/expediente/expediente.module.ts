@@ -17,6 +17,7 @@ import { ActividadAllExpedienteComponent } from './actividad-all-expediente/acti
 import { CreateActividadExpedienteComponent } from './create-actividad-expediente/create-actividad-expediente.component';
 import { UpdateActividadExpedienteComponent } from './update-actividad-expediente/update-actividad-expediente.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UpdateExpedienteComponent } from './update-expediente/update-expediente.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
                 CirugiasAllComponent,
                 ActividadAllExpedienteComponent,
                 CreateActividadExpedienteComponent,
-                UpdateActividadExpedienteComponent],
+                UpdateActividadExpedienteComponent,
+                UpdateExpedienteComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

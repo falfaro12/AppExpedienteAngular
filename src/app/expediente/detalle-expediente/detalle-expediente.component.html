@@ -8,6 +8,7 @@
           <th>Hace Deporte</th>
           <th>Registro de Fumado</th>
           <th>Registro de Alcoholismo</th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
@@ -33,10 +34,17 @@
             {{expediente.alcohol.estadoAlcohol}}
           </td>
           <td>
+<<<<<<< HEAD
               <button class="btn btn-info" (click)="linkEditar(expediente.id)">
                 CompartirExpediente
               </button>
             </td>
+=======
+            <button class="btn btn-info" (click)="linkEditar()">
+              Editar
+            </button>
+          </td>
+>>>>>>> fa6633121c80d4c9674c7ca45fca1998b87c26eb
         </tr>
       </tbody>
     </table>

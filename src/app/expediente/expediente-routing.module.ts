@@ -16,6 +16,8 @@ import { UpdateAlcoholComponent } from './update-alcohol/update-alcohol.componen
 import { FumadoAllComponent } from './fumado-all/fumado-all.component';
 import { MedicamentosAllComponent } from './medicamentos-all/medicamentos-all.component';
 import { CirugiasAllComponent } from './cirugias-all/cirugias-all.component';
+import { UpdateActividadExpedienteComponent } from './update-actividad-expediente/update-actividad-expediente.component';
+import { UpdateExpedienteComponent } from './update-expediente/update-expediente.component';
 
 
 
@@ -27,6 +29,10 @@ const routes: Routes = [
       {
         path: 'detalleExpediente',
         component: DetalleExpedienteComponent
+      },
+      {
+        path: 'actualizarExpediente',
+        component: UpdateExpedienteComponent
       },
       {
         path: 'listaAlergiasExp',
@@ -53,8 +59,8 @@ const routes: Routes = [
         component: CreateActividadExpedienteComponent
       },
       {
-        path: 'updateActividadExp',
-        component: UpdateAlergiaExpedienteComponent
+        path: 'updateActividadExp/:id',
+        component: UpdateActividadExpedienteComponent
       },
       {
         path: 'listaAlcohol',

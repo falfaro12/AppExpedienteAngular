@@ -44,7 +44,7 @@ export class UpdateAlcoholComponent implements OnInit {
           queryParams: {update: 'true'}
         });
       }
-    )
+    );
   }
   onBack() {
     this.router.navigate(['/mantExpediente/listaAlcohol']);
