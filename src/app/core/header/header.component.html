@@ -96,6 +96,7 @@
             >
           </div>
         </li>
+
         <li class="nav-item" *ngIf="UsuarioActual?.user.rol_id == 2">
           <a
             class="nav-link"
@@ -104,6 +105,7 @@
             >Agendas</a
           >
         </li>
+
         <!--Mantenimientos usuario paciente -->
         <li class="nav-item dropdown" *ngIf="UsuarioActual?.user.rol_id == 3">
           <a
@@ -130,6 +132,14 @@
               >Gestión de Perfiles</a
             >
           </div>
+        </li>
+        <li class="nav-item" *ngIf="UsuarioActual?.user.rol_id == 3">
+          <a
+            class="nav-link"
+            [routerLink]="['cita/SeleccionaMedico']"
+            routerLinkActive="active"
+            >Sacar Citas</a
+          >
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">

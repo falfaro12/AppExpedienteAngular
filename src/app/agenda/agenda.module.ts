@@ -6,6 +6,7 @@ import { AgendaShowComponent } from './agenda-show/agenda-show.component';
 import { AgendaDetalleComponent } from './agenda-detalle/agenda-detalle.component';
 
 
+
 @NgModule({
   declarations: [AgendaShowComponent, AgendaDetalleComponent],
   imports: [

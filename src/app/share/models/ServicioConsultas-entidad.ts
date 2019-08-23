@@ -1,5 +1,6 @@
 import { EspecialidadEntidad } from './Especialidad-entidad';
 import { UserEntidad } from './user-entidad';
+import { HorarioEntidad } from './horario-entidad';
 
 export interface ServicioConsultasEntidad {
   id: number;
@@ -11,6 +12,6 @@ export interface ServicioConsultasEntidad {
   user: UserEntidad;
   created_at: Date;
   updated_at: Date;
-  
 
+  horarios: HorarioEntidad[];
 }

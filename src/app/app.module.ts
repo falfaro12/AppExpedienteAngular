@@ -19,6 +19,7 @@ import { EnfermedadModule } from './enfermedad/enfermedad.module';
 import { ActividadModule } from './actividad/actividad.module';
 import { HorarioModule } from './horario/horario.module';
 import { AgendaModule } from './agenda/agenda.module';
+import { CitaModule } from './cita/cita.module';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { AgendaModule } from './agenda/agenda.module';
     ActividadModule,
     EnfermedadModule,
     AgendaModule,
+    CitaModule,
     HorarioModule,
     HomeModule,
     UsuarioModule,
@@ -49,7 +51,8 @@ import { AgendaModule } from './agenda/agenda.module';
     EnfermedadModule,
     ActividadModule,
     HorarioModule,
-    AgendaModule
+    AgendaModule,
+    CitaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
