@@ -9,6 +9,7 @@ import { CompartirExpedienteEntidad } from './models/compartir-entidad';
 import { CompartirExpediente } from './models/compartir';
 import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { Usuario } from './models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,7 @@ export class CompartirService {
     );
   }
 
-  storeCompartirExpediente(
-    compartido: CompartirExpedienteEntidad
-  ): Observable<CompartirExpediente> {
+  storeCompartirExpediente(compartido: CompartirExpedienteEntidad): Observable<CompartirExpediente> {
     let headers = new HttpHeaders();
     if (this.currentUser) {
       headers = headers.append(
@@ -45,7 +44,7 @@ export class CompartirService {
     return this.http
       .post<CompartirExpediente>(
         this.ServerUrl +
-          'expediente/expediente_medico/compartir/compartir_expediente/',
+          'expediente/compartir/compartirE/',
         compartido,
         { headers }
       )
@@ -71,6 +70,18 @@ export class CompartirService {
         retry(1),
         catchError(this.handler.handleError.bind(this))
       );
+  }
+  getUsuarios(): Observable<Usuario> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .get<Usuario>(this.ServerUrl + 'expediente/compartir/UsuariosCompartir', {headers})
+      .pipe(catchError(this.handler.handleError.bind(this)));
   }
 
   getUsuarioCompartido(id: any): Observable<CompartirExpediente> {

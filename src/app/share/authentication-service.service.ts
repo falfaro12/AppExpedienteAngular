@@ -97,12 +97,7 @@ export class AuthenticationServiceService {
       })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
-  getUsuarios(): Observable<Usuario> {
-
-    return this.http
-      .get<Usuario>(this.ServerUrl + 'expediente/compartir/UsuariosCompartir')
-      .pipe(catchError(this.handler.handleError.bind(this)));
-  }
+ 
 
   // login
   loginUser(user: UserEntidad): Observable<UsuarioLogin> {

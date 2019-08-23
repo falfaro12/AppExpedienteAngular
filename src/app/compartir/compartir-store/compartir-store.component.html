@@ -1,19 +1,21 @@
-<div class="container-fluid">
-    <div
-      class="row box mt-0"
-      style="
-  background: white;
-  border-top: 2px solid #34d5de;"
-    >
+<div class="tituloBanner">
+  <div class="col-lg-12 mx-auto">
+    <div class="site-heading">
+      <h1>Compartir de Expediente</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
       <form #form="ngForm" class="w-100" (ngSubmit)="onSubmit(form.value)">
         <div class="col-12 mt-4 text-center"></div>
 
-        <div class="text-center mb-5">
-          <h2>Selecciona con quién deseas compartir el expediente</h2>
-        </div>
         <div class="row">
           <div class="col-lg-7 col-md-7 col-sm-12">
             <input type="hidden" name="perfil_id" [(ngModel)]="perfilID" />
+            <label class="control-label col-sm-3"
+            >
+            <span class="text-danger">*</span>
+          </label>
             <div class="form-group input-group my-lg-5">
               <label class="control-label col-sm-3"
                 >Pacientes y Doctores registrados
@@ -63,54 +65,16 @@
                         border-radius: 0.4em;"
                       id="volver"
                     >
-                      Volver atrás <i class="fas fa-undo-alt"></i>
+                      Volver atrás
                     </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            class="col-lg-5 col-md-5 col-sm-12"
-            *ngIf="pacienteSelected == undefined"
-          >
-            <h3 class="alert alert-warning my-lg-5">
-              No ha seleccionado ningún paciente aún
-            </h3>
-          </div>
-          <div
-            class="col-lg-5 col-md-5 col-sm-12"
-            *ngIf="pacienteSelected != undefined"
-          >
-            <div class="card text-center">
-              <div class="card-header text-white bg-primary h4 mb-lg-0">
-                Información del paciente
-              </div>
-              <div class="card-body bg-white p-lg-2">
-                <h5 class="card-title">Nombre:</h5>
-                <p class="card-text">
-                  {{
-                    pacienteSelected.nombre +
-                      ' ' +
-                      pacienteSelected.apellido1 +
-                      ' ' +
-                      pacienteSelected.apellido2
-                  }}
-                </p>
-                <h5 class="card-title">Correo:</h5>
-                <p class="card-text">
-                  {{ pacienteSelected.email }}
-                </p>
-              </div>
-              <div
-                class="card-footer text-muted"
-                style="background: lightgrey;"
-              >
-                Paciente registrado
-              </div>
-            </div>
-          </div>
+
         </div>
       </form>
+      {{ form.value | json }}
     </div>
-  </div>
+

@@ -22,7 +22,6 @@ export class DetalleExpedienteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   
     this.expedienteService.getExpediente().subscribe(
       (respuesta: Expediente) => {
         this.datos = respuesta;
@@ -30,11 +29,8 @@ export class DetalleExpedienteComponent implements OnInit {
        },
        error => (this.error = error));
   }
-  linkCompartir(id: number) {
-    this.router.navigate(['/alergia/update/', id], { relativeTo: this.route });
-  }
 
-  linkEditar(){
+  linkEditar(id: number){
     this.router.navigate(['./actualizarExpediente'], {relativeTo: this.route});
   }
 

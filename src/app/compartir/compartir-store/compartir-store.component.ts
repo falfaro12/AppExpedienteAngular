@@ -31,18 +31,16 @@ export class CompartirStoreComponent implements OnInit {
     private comparteService: CompartirService
   ) {
     this.autentificacion.currentUser.subscribe(x => (this.currentUser = x));
-    if (this.currentUser.user.rol_id !== 3) {
-      this.router.navigate(['/']);
-    }
   }
 
   ngOnInit() {
     // tslint:disable-next-line: radix
-    let id = +this.route.snapshot.paramMap.get('id');
+    let id = + this.route.snapshot.paramMap.get('id');
     this.perfilID = id;
-    this.autentificacion.getUsuarios().subscribe(
+    this.comparteService.getUsuarios().subscribe(
       (respuesta: Usuario) => {
         this.pacientes = respuesta;
+        console.log(this.pacientes);
       },
       error => (this.error = error)
     );
@@ -53,7 +51,7 @@ export class CompartirStoreComponent implements OnInit {
       (respuesta: CompartirExpediente) => {
         this.datos = respuesta;
         this.router.navigate(
-          ['/compartir/index'],
+          ['/MantPerfil/lista'],
           {
             queryParams: { enviar: 'true' }
           }
@@ -67,7 +65,7 @@ export class CompartirStoreComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['/expediente_medico/compartir/usuarios_compartidos']);
+    this.router.navigate(['/MantPerfil/lista']);
   }
   onChange(selectedValue) {
     const filter = this.pacientes.Medicos.filter(x =>

@@ -32,10 +32,12 @@ export class PerfilIndexComponent implements OnInit {
   ngOnInit() {
     let notifC = false;
     let notifM = false;
+    let notComp = false;
     // Mensajes
     this.route.queryParams.subscribe(params => {
       notifC = params.create || false;
       notifM = params.update || false;
+      notComp = params.enviar || false;
     });
     if (notifC) {
       this.notificacion.msjSuccess('Servicio creado!', 'Crear Servicio Consulta');
@@ -44,6 +46,18 @@ export class PerfilIndexComponent implements OnInit {
       this.notificacion.msjSuccess(
         'Servicio actualizado!',
         'Actualizar Servicio'
+      );
+    }
+    if (notifM) {
+      this.notificacion.msjSuccess(
+        'Servicio actualizado!',
+        'Actualizar Servicio'
+      );
+    }
+    if (notifM) {
+      this.notificacion.msjSuccess(
+        'Expediente conpartido!',
+        'Compartir'
       );
     }
     // suscripción para uso del servicio
@@ -65,7 +79,7 @@ export class PerfilIndexComponent implements OnInit {
 
   linkExp(id: number) {
     this.expedienteService.setCurrentExp(id);
-    this.router.navigate(['Compartir/compartirExpediente/',id]);
+    this.router.navigate(['/compartirExpediente/', id]);
   }
 }
 // Funcion que se conecta con el servicio para invocar a la funcion de obtener restaurantes
