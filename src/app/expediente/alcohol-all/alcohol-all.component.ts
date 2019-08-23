@@ -38,7 +38,10 @@ export class AlcoholAllComponent implements OnInit {
         this.datos = respuesta;
         this.alcohol = this.datos.alcohol;
       }
-    )
+    );
+  }
+  linkEditar() {
+    this.router.navigate(['../updateAlcohol' ], {relativeTo: this.route});
   }
 
 }

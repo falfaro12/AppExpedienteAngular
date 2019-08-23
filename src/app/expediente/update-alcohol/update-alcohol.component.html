@@ -1,1 +1,115 @@
-<p>update-alcohol works!</p>
+<div class="tituloBanner">
+  <div class="col-lg-12 mx-auto">
+    <div class="site-heading">
+      <h1>Actualizar Registro de Alcoholismo</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="card col-lg-12">
+      <form #form="ngForm" *ngIf="alcohol" (ngSubmit)="onSubmit(form.value)">
+        <input type="hidden" name="id" [(ngModel)]="alcohol.id" />
+        <div class="form-group">
+          <label for="estadoAlcohol">Estado</label>
+          <select
+            class="form-control"
+            name="estadoAlcohol"
+            [(ngModel)]="alcohol.estadoAlcohol"
+            [compareWith]='compareFn'
+          >
+            <option>Toma</option>
+            <option>Tomaba</option>
+            <option>No toma</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tiempoInicio">Tiempo de Inicio</label>
+          <select
+            class="form-control"
+            name="tiempoInicio"
+            [(ngModel)]="alcohol.tiempoInicio"
+            [compareWith]='compareFn'
+          >
+            <option>Menos de un mes</option>
+            <option>Mas de un mes</option>
+            <option>Mas de 3 meses</option>
+            <option>Mas de 6 meses</option>
+            <option>Mas de 1 años</option>
+            <option>Mas de 3 años</option>
+            <option>Mas de 5 años</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="frecuencia">Frecuencia en veces por semana</label>
+          <select
+            class="form-control"
+            name="frecuencia"
+            [(ngModel)]="alcohol.frecuencia"
+          >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tipoLicor">Tipo de Licor</label>
+          <select
+            class="form-control"
+            name="tipoLicor"
+            [(ngModel)]="alcohol.tipoLicor"
+            [compareWith]='compareFn'
+          >
+            <option>Vino</option>
+            <option>Cerveza</option>
+            <option>Alcohol</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cantidad">Cantidad en ml</label>
+          <select
+            class="form-control"
+            name="cantidad"
+            [(ngModel)]="alcohol.cantidad"
+            [compareWith]='compareFn'
+          >
+            <option>250</option>
+            <option>500</option>
+            <option>750</option>
+            <option>1000</option>
+            <option>1250</option>
+            <option>1500</option>
+            <option>1750</option>
+            <option>2000</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="Observaciones">Observaciones</label>
+          <input
+            type="text"
+            class="form-control"
+            name="Observaciones"
+            [(ngModel)]="alcohol.Observaciones"
+            placeholder="Nombre Alergia"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary float-left">
+          Actualizar
+        </button>
+        <button
+          type="button"
+          (click)="onBack()"
+          class="btn btn-secondary float-right"
+        >Regresar</button>
+        {{ form.value | json }}
+      </form>
+
+      <br />
+    </div>
+  </div>
+</div>

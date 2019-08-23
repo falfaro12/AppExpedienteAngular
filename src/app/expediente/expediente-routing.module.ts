@@ -37,7 +37,7 @@ const routes: Routes = [
         component: CreateAlergiaExpedienteComponent
       },
       {
-        path: 'updateAlergiaExp',
+        path: 'updateAlergiaExp/:id',
         component: UpdateAlergiaExpedienteComponent
       },
       {

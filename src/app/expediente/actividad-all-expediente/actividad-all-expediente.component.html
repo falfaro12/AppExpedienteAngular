@@ -1,1 +1,38 @@
-<p>actividad-all-expediente works!</p>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Actividad</th>
+          <th>Cantidad(Veces por Semana)</th>
+          <th>Duración</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let act of actividades">
+          <td>{{ act.nombre }}</td>
+          <td>
+            <span
+              class="badge badge-info"
+            >
+              {{ act.pivot.cantidad }}
+            </span>
+          </td>
+          <td>
+            {{ act.pivot.minutos }}
+          </td>
+          <td>
+            <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
+            <!--    Es necesario retroceder un nivel
+               Porque esta dentro de un componente que contiene rutas hijas -->
+            <button class="btn btn-info" (click)="linkEditar(act.id)">
+              Editar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-info" (click)="linkCrear()">Agregar</button>
+  </div>
+</div>
