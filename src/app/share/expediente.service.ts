@@ -163,7 +163,7 @@ export class ExpedienteService {
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
 
-  updateActivitiesExp(actividad: ActividadEntidad): Observable<Actividad>{
+  updateActivitiesExp(actividad: ActividadPivotEntidad): Observable<Actividad>{
     // tslint:disable-next-line: radix
     this.expediente_id = parseInt(localStorage.getItem('expediente_id'));
     let headers = new HttpHeaders();
@@ -194,6 +194,8 @@ export class ExpedienteService {
   }
 
   getActividad($id: number){
+    // tslint:disable-next-line: radix
+    this.expediente_id = parseInt(localStorage.getItem('expediente_id'));
     let headers = new HttpHeaders();
     if (this.currentUser) {
       headers = headers.append(
@@ -202,7 +204,37 @@ export class ExpedienteService {
       );
     }
     return this.http
-      .get<Actividad>(this.ServerUrl + 'expediente/actividad/' + $id, {headers})
+      .get<Actividad>(this.ServerUrl + 'expediente/showActividad/' + $id + '/' + this.expediente_id, {headers})
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
+  createActividadExp(actividad: ActividadEntidad): Observable<Actividad> {
+    // tslint:disable-next-line: radix
+    this.expediente_id = parseInt(localStorage.getItem('expediente_id'));
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .post<Actividad>(this.ServerUrl + 'expediente/agregaActividad/' + this.expediente_id, actividad, {headers})
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
+  createAlergiaExp(alergia: AlergiaEntidad): Observable<Alergia>{
+    // tslint:disable-next-line: radix
+    this.expediente_id = parseInt(localStorage.getItem('expediente_id'));
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .post<Alergia>(this.ServerUrl + 'expediente/agregaAlergia/' + this.expediente_id, alergia, {headers})
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
 

@@ -8,19 +8,19 @@
 <div class="container">
   <div class="row">
     <div class="card col-lg-12">
-      <form #form="ngForm" *ngIf="expediente" (ngSubmit)="onSumbit(form.value)">
+      <form #form="ngForm" *ngIf="expediente" (ngSubmit)="onSubmit(form.value)">
         <input type="hidden" name="id" [(ngModel)]="expediente.id" />
         <fieldset class="form-group">
           <legend>Tiene Alergia</legend>
           <div class="form-check">
             <label class="form-check-label">
-              <input [(ngModel)]="expediente.tieneAlergia" type="radio" class="form-check-input" name="optionsAlergia" id="optionsRadios1" value="expediente.tieneAlergia" checked="">
+              <input [(ngModel)]="expediente.tieneAlergia" type="radio" class="form-check-input" name="tieneAlergia" id="optionsRadios1" [value]=1 checked="">
               Si
             </label>
           </div>
           <div class="form-check">
           <label class="form-check-label">
-              <input [(ngModel)]="expediente.tieneAlergia" type="radio" class="form-check-input" name="optionsAlergia" id="optionsRadios2" value="option2">
+              <input [(ngModel)]="expediente.tieneAlergia" type="radio" class="form-check-input" name="tieneAlergia" id="optionsRadios2" [value]=0>
               No
             </label>
           </div>
@@ -29,13 +29,13 @@
           <legend>Hace Actividades Físicas</legend>
           <div class="form-check">
             <label class="form-check-label">
-              <input [(ngModel)]="expediente.tieneActividad" type="radio" class="form-check-input" name="optionsActividad" id="optionsRadios3" value="option3" checked="">
+              <input [(ngModel)]="expediente.tieneActividad" type="radio" class="form-check-input" name="tieneActividad" id="optionsRadios3" [value]=1 checked="">
               Si
             </label>
           </div>
           <div class="form-check">
           <label class="form-check-label">
-              <input [(ngModel)]="expediente.tieneActividad" type="radio" class="form-check-input" name="optionsActividad" id="optionsRadios4" value="option4">
+              <input [(ngModel)]="expediente.tieneActividad" type="radio" class="form-check-input" name="tieneActividad" id="optionsRadios4" [value]=0 >
               No
             </label>
           </div>
@@ -43,11 +43,6 @@
         <button type="submit" class="btn btn-primary float-left">
           Actualizar
         </button>
-        <button
-          type="button"
-          (click)="onBack()"
-          class="btn btn-secondary float-right"
-        >Regresar</button>
         {{ form.value | json }}
       </form>
 

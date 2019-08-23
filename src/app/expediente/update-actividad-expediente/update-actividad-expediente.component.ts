@@ -38,11 +38,11 @@ export class UpdateActividadExpedienteComponent implements OnInit {
     );
   }
 
-  onSubmit(obj: ActividadEntidad,){
+  onSubmit(obj: ActividadPivotEntidad,){
     return this.expedienteService.updateActivitiesExp(obj).subscribe(
       (respuesta: Actividad) => {
         this.datos = respuesta;
-        this.router.navigate(['/mantExpediente/listaActividadesExp'], {
+        this.router.navigate(['/mantExpediente/listaActividadExp'], {
           queryParams: {update: 'true'}
         });
       }
