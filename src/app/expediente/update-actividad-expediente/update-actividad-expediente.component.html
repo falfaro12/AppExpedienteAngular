@@ -10,6 +10,7 @@
     <div class="card col-lg-12">
       <form #form="ngForm" *ngIf="actividad" (ngSubmit)="onSubmit(form.value)">
         <input type="hidden" name="id" [(ngModel)]="actividad.id" />
+        <input type="hidden" name="activity_id" [(ngModel)]="actividad.pivot.activity_id" />
         <div class="form-group">
           <label for="nombre">Nombre</label>
           <input
@@ -45,6 +46,7 @@
             name="minutos"
             [(ngModel)]="actividad.pivot.minutos"
           >
+            <option>12</option>
             <option>15</option>
             <option>30</option>
             <option>45</option>

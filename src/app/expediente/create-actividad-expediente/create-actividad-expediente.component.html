@@ -1,1 +1,25 @@
-<p>create-actividad-expediente works!</p>
+<div class="container">
+  <div class="row">
+    <div class="card col-lg-12">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nombre"
+            ngModel
+            placeholder="Nombre alergia"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary float-left">
+          Crear
+        </button>
+        
+        {{ form.value | json }}
+      </form>
+    </div>
+  </div>
+</div>
+
