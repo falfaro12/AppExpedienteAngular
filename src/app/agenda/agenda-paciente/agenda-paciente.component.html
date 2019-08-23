@@ -1,0 +1,62 @@
+<div class="tituloBanner">
+  <div class="col-lg-12 mx-auto">
+    <div class="site-heading">
+      <h1>Agenda</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Especialidad</th>
+          <th>Consultorio</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Paciente</th>
+          <th>Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let agenda of datos?.citas">
+          <td>
+            {{ agenda.horario.servicio__consultas.especialidad.nombre }}
+          </td>
+          <td>
+            {{ agenda.horario.servicio__consultas.ubicacion }}
+          </td>
+          <td>
+            {{ agenda.horario.Fecha_cita | date: 'dd/MM/yyyy' }}
+          </td>
+          <td>
+            {{ agenda.horario.hora_cita }}
+          </td>
+          <td>
+            <span class="badge badge-info" *ngIf="agenda.profile != null">
+              {{
+                agenda.profile.nombre +
+                  ' ' +
+                  agenda.profile.primerApellido +
+                  ' ' +
+                  agenda.profile.segundoApellido
+              }}
+            </span>
+            <span *ngIf="agenda === null" class="badge badge-info">
+              No ha sido registrada por ningún paciente
+            </span>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-info"
+              (click)="onSeleccionaAgenda(h.id)"
+            >
+              Detalle
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

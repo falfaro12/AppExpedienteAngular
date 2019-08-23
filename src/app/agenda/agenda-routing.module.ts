@@ -3,13 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AgendaShowComponent } from './agenda-show/agenda-show.component';
 import { AgendaDetalleComponent } from './agenda-detalle/agenda-detalle.component';
 import { AuthGuard } from '../share/helpers/auth.guard';
-
+import { AgendaPacienteComponent } from './agenda-paciente/agenda-paciente.component';
 
 const routes: Routes = [
   {
     path: 'agendaMedico',
-    children:
-    [
+    children: [
       {
         path: 'agenda',
         component: AgendaShowComponent,
@@ -22,10 +21,20 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'agendaPaciente',
+    children: [
+      {
+        path: 'agendaP',
+        component: AgendaPacienteComponent,
+        canActivate: [AuthGuard]
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AgendaRoutingModule { }
+export class AgendaRoutingModule {}
