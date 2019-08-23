@@ -1,5 +1,6 @@
 export interface PerfilEntidad {
   id: number;
+  cedula: number;
   nombre: string;
   primerApellido: string;
   segundoApellido: string;

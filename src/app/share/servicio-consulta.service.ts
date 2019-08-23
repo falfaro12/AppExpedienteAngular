@@ -14,6 +14,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Especialidad } from './models/especialidad';
 import { ServicioConsultasEntidad } from './models/ServicioConsultas-entidad';
+import { Horario } from './models/horario';
 
 @Injectable({
   providedIn: 'root'
@@ -71,7 +72,24 @@ getServicio(id: any): Observable<ServicioConsulta> {
     .pipe(catchError(this.handler.handleError.bind(this)));
   }
 
-
+  getCitasMedico(id: any): Observable<Horario> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .get<Horario>(
+        this.ServerUrl + 'expediente/cita/HorarioMedico/' + id,
+        { headers }
+      )
+      .pipe(
+        retry(1),
+        catchError(this.handler.handleError.bind(this))
+      );
+  }
 
   // HttpClient API get() method => Listado de restaurantes
   getServicios(id: any): Observable<ServicioConsulta> {
@@ -99,4 +117,20 @@ getServicio(id: any): Observable<ServicioConsulta> {
       .get<Especialidad>(this.ServerUrl + 'expediente/medico/especialidades')
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
+  getServicioConsultaAll(): Observable<ServicioConsulta> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .get<ServicioConsulta>(
+        this.ServerUrl + 'expediente/cita/ListaServicios',
+        { headers }
+      )
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
 }

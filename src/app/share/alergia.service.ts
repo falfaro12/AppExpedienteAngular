@@ -123,7 +123,7 @@ export class AlergiaService {
       );
     }
     return this.http
-    .post<Alergia>(this.ServerUrl + 'expediente/agregaimagenActividad/' + id, fd, {headers})
+    .post<Alergia>(this.ServerUrl + 'expediente/agregaimagenAlergia/' + id, fd, {headers})
     .pipe(
       retry(1)
       , catchError(this.handler.handleError.bind(this)));

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NotificationService } from 'src/app/share/notification.service';
 
 @Component({
   selector: 'app-horario-mant',
@@ -8,9 +9,28 @@ import { Router } from '@angular/router';
 })
 export class HorarioMantComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private route: ActivatedRoute,   private notification: NotificationService) { }
 
-  ngOnInit() {
+ngOnInit() {
+  let notifC = false;
+  let notieM = false;
+
+  // Mensajes
+  this.route.queryParams.subscribe(params => {
+    notifC = params.registrarHorario || false;
+    notieM = params.deleteHorario || false;
+  });
+  if (notifC) {
+    this.notification.msjSuccess('Horario creado', 'Crear Horario');
+  }
+
+  if (notieM) {
+    this.notification.msjSuccess(
+      'Horario Eliminado!',
+      'Eliminar'
+    );
+  }
+
   }
 
 }

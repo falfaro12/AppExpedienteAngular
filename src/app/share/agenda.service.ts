@@ -5,15 +5,14 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { AuthenticationServiceService } from './authentication-service.service';
 import { CustomHandlerErrorService } from './custom-handler-error-service.service';
-import { HorarioEntidad } from './models/horario-entidad';
 import { Horario } from './models/horario';
-import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HorarioService {
+export class AgendaService {
   currentUser: UsuarioLogin;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -25,49 +24,44 @@ export class HorarioService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private AuthenticationService: AuthenticationServiceService,
+    private authenticationService: AuthenticationServiceService,
     private handler: CustomHandlerErrorService
   ) {
-    this.AuthenticationService.currentUser.subscribe(
+    this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
   }
-  createServicio(horario: HorarioEntidad): Observable<Horario> {
+
+  getAgendaMedico(): Observable<Horario> {
     let headers = new HttpHeaders();
     if (this.currentUser) {
       headers = headers.append(
         'Authorization',
-        'Bearer' + this.currentUser.access_token
+        'Bearer ' + this.currentUser.access_token
       );
     }
     return this.http
-    .post<HorarioEntidad>(this.ServerUrl + 'expediente/medico/agregaHorario', horario, { headers })
-    .pipe(catchError(this.handler.handleError.bind(this)));
-
-  }
-
-  getHorariosSinAsignar(): Observable<Horario> {
-    let headers = new HttpHeaders();
-    if (this.currentUser) {
-      headers = headers.append(
-        'Authorization',
-        'Bearer' + this.currentUser.access_token
-      );
-    }
-    return this.http
-      .get<Horario>(this.ServerUrl + 'expediente/medico/listaHorariosSinasignar', {headers})
+      .get<Horario>(this.ServerUrl + 'expediente/medico/horario_medico/' + this.currentUser.user.id, {
+        headers
+      })
       .pipe(catchError(this.handler.handleError.bind(this)));
   }
-  dropHorario(id: any): Observable<void> {
+  getDetalleAgenda(id: any): Observable<Horario> {
     let headers = new HttpHeaders();
     if (this.currentUser) {
       headers = headers.append(
         'Authorization',
-        'Bearer' + this.currentUser.access_token
+        'Bearer ' + this.currentUser.access_token
       );
     }
     return this.http
-    .delete<void>(this.ServerUrl + 'expediente/medico/horario/' + id, {headers} )
-    .pipe(catchError(this.handler.handleError.bind(this)));
+      .get<Horario>(
+        this.ServerUrl + 'expediente/medico/detalleAgendaMedico/' + id,
+        { headers }
+      )
+      .pipe(
+        retry(1),
+        catchError(this.handler.handleError.bind(this))
+      );
   }
 }

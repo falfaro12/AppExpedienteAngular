@@ -1,1 +1,37 @@
-<p>horario-all works!</p>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Horaio</th>
+          <th>Fecha de cita</th>
+          <th>Hora de cita</th>
+          <th>Sevicio</th>
+          <th>estado</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let alergia of datos?.horarios">
+          <td>{{ alergia.id }}</td>
+          <td>
+            <span class="badge badge-info">
+              {{ alergia.Fecha_cita }}
+            </span>
+          </td>
+          <td>
+            {{ alergia.hora_cita }}
+          </td>
+          <td>{{ alergia.servicio__consultas.ubicacion}}</td>
+          <td *ngIf="alergia.estado == 0"> Asignada</td>
+          <td *ngIf="alergia.estado == 1">Sin Asignar</td>
+          <td>
+            <button class="btn btn-info" (click)="linkEliminar(alergia.id)">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
