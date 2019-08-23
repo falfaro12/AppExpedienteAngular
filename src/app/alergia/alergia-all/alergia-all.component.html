@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let alergia of datos?.alergia">
+        <tr *ngFor="let alergia of datos?.Alergia">
           <td>{{ alergia.nombre }}</td>
           <td>
             <span class="badge badge-info">
@@ -31,18 +31,8 @@
               [src]="obtenerImagen(alergia.ruta_imagen)"
             />
           </td>
-           <!--   <td>
-            <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a>
-          Es necesario retroceder un nivel
-               Porque esta dentro de un componente que contiene rutas hijas
-         <button class="btn btn-info" (click)="linkEditar(alergia.id)">
-              Editar
-            </button>
-          </td>-->
+
           <td>
-            <!-- <a [routerLink]="['../videojuego/update/', vj.id]">Editar</a> -->
-            <!--    Es necesario retroceder un nivel
-               Porque esta dentro de un componente que contiene rutas hijas -->
             <button class="btn btn-info" (click)="linkEliminar(alergia.id)">
               Eliminar
             </button>

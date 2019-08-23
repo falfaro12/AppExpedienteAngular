@@ -19,7 +19,9 @@ export class AlergiaAllComponent implements OnInit {
     private router: Router,
     private alergiaService: AlergiaService,
     private notification: NotificationService
-  ) {}
+  ) {
+    this.mostrarAlergias();
+  }
 
   ngOnInit() {
     let notifC = false;
@@ -43,23 +45,20 @@ export class AlergiaAllComponent implements OnInit {
       );
     }
     if (notres) {
-      this.notification.msjSuccess(
-        'Alergia restaurada!',
-        'Restaurar Alergia'
-      );
+      this.notification.msjSuccess('Alergia restaurada!', 'Restaurar Alergia');
     }
     // suscripcion para el consumo del servicio
-    this.mostrarAlergias();
   }
 
   mostrarAlergias() {
     // suscripcion para el consumo del servicio
-    this.alergiaService
-      .getAlergias()
-      .subscribe(
-        (respuesta: Alergia) => (this.datos = respuesta),
-        error => (this.error = error)
-      );
+    this.alergiaService.getAlergias().subscribe(
+      (respuesta: Alergia) => {
+        this.datos = respuesta;
+        console.log(this.datos);
+      },
+      error => (this.error = error)
+    );
   }
   linkEditar(id: number) {
     this.router.navigate(['/alergia/update/', id], { relativeTo: this.route });
@@ -68,7 +67,7 @@ export class AlergiaAllComponent implements OnInit {
     return this.alergiaService.dropAlergia(id).subscribe(
       (respuesta: void) => {
         this.router.navigate(['/alergiaM/lista'], {
-          queryParams: {delete: 'true'}
+          queryParams: { delete: 'true' }
         });
       },
       error => {},
@@ -80,11 +79,9 @@ export class AlergiaAllComponent implements OnInit {
         );
       }
     );
-
   }
 
-
-  obtenerImagen( ruta_imagen: string) {
+  obtenerImagen(ruta_imagen: string) {
     return this.alergiaService.obtenerImagenService(ruta_imagen);
   }
 }
