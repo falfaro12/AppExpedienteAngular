@@ -1,4 +1,4 @@
-import { AgendaEntidad } from './agenda-entidad';
+import { AgendaEntidad } from './agenda_Entidad';
 
 export interface Agenda {
   msg: string;

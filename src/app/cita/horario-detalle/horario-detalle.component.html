@@ -1,138 +1,87 @@
 <div class="tituloBanner">
-    <div class="col-lg-12 mx-auto">
-      <div class="site-heading">
-        <h1>Detalle de Servicio Consulta</h1>
-      </div>
+  <div class="col-lg-12 mx-auto">
+    <div class="site-heading">
+      <h1>Detalle de Servicio Consulta</h1>
     </div>
   </div>
-  <div id="content">
-    <div class="container">
-      <div class="row">
-        <div id="customer-order" class="col-12">
-          <div class="box " style="margin: 40px 0 !important;">
-            <div
-              class="card-body"
-              style="
+</div>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div id="customer-order" class="col-12">
+        <div class="box" style="margin: 40px 0 !important;">
+          <div
+            class="card-body"
+            style="
             background: #f7f7f7;"
-            >
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <div class="row">
-                    <div class="col-12">
-                        <h5 class="card-title">
-                      Servicio Consulta</h5>
-                    </div>
-                    <div class="col-12 mt-1">
-                      <label for="especialidad" class="w-100"
-                        >Especialidad</label
-                      >
-                      <span id="especialidad" class="text-muted"
-                        >
-                        {{ servicio.especialidad.descripcion }}</span
-                      >
-                    </div>
-                    <div class="col-12 mt-1">
-                      <label for="precio" class="w-100"
-                        >Precio de la consulta</label
-                      >
-                      <span id="precio" class="text-muted"
-                        >
-                        {{ servicio.precio | currency: 'CRC':'₡' }}</span
-                      >
-                    </div>
-                    <div class="col-12 mt-1">
-                      <label for="ubicacion" class="w-100"
-                        >Ubicación del consultorio médico</label
-                      >
-                      <span id="ubicacion" class="text-muted"
-                        >
-                        {{ servicio.ubicacion }}</span
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <div class="row">
-                    <div class="col-12">
-                        <h5 class="card-title">
-                            Médico</h5>
-                    </div>
-                    <div class="col-12">
-                      <label for="nombre" class="w-100">Médico</label>
-                      <span id="nombre" class="text-muted"
-                        >
-                        {{
-                          medico.nombre +
-                            ' ' +
-                            medico.primerApellido +
-                            ' ' +
-                            medico.segundoApellido
-                        }}</span
-                      >
-                    </div>
-                    <div class="col-6 mt-1">
-                      <label for="mail" class="w-100">Correo</label>
-                      <span id="mail" class="text-muted">
-                        {{ medico.email }}</span
-                      >
-                    </div>
-                    <div class="col-12 mt-5">
-                      <button
-                        type="button"
-                        (click)="onBack()"
-                        class="btn btn-outline-secondary"
-                        id="volver">
-                        Volver atrás
-                      </button>
-                    </div>
+          >
+            <div class="row">
+              <div class="col-lg-12 col-md-6 col-sm-12">
+                <div class="row">
+                  <div class="col-lg-12 text-center">
+                    <h5 class="text-center">
+                      Médico:
+                      {{
+                        medico.nombre +
+                          ' ' +
+                          medico.primerApellido +
+                          ' ' +
+                          medico.segundoApellido
+                      }}
+                    </h5>
+                    <h5 class="text-center">
+                      Especialidad: {{ servicio.especialidad.nombre }}
+                    </h5>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            class="box"
-            style="
+        </div>
+        <div
+          class="box"
+          style="
             margin: 40px 0 !important;"
-          >
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Sacar Cita</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let h of datos?.horarios">
-                          <td>
-                          {{ h.Fecha_cita | date: 'dd/MM/yyyy' }}
-                        </td>
-                        <td>
-                          {{h.hora_cita }}
-                        </td>
-
-                        <td>
-                          <button
-                          type="button"
-                          class="btn btn-info"
-                          (click)="onSeleccionaHorario(h.id)">
-                          Reservar cita
-                        </button>
-                        </td>
-                      </tr>
-                <tbody *ngIf="datos.horarios.length === 0">
-                  <tr>
-                    <td colspan="3" class="alert alert-info">
-                      No hay citas disponibles
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        >
+          <div class="row">
+            <div class="card col-lg-12">
+              <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+                <div class="form-group">
+                  <label for="descripcion">Horario</label>
+                  <select ngModel class="form-control" name="id_Horario">
+                    <option *ngFor="let p of datos?.horarios" [value]="p.id"
+                      >{{ p.Fecha_cita }} {{ p.hora_cita }}</option
+                    >
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="descripcion">Perfil</label>
+                  <select ngModel class="form-control" name="id_perfil">
+                    <option
+                      *ngFor="let perfil of perfildato?.Perfil"
+                      [value]="perfil.id"
+                      >{{ perfil.cedula }} {{ perfil.nombre }}
+                      {{ perfil.primerApellido }}
+                      {{ perfil.segundoApellido }}</option
+                    >
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary float-left">
+                  Reservar Cita
+                </button>
+                <button
+                  type="button"
+                  (click)="onBack()"
+                  class="btn btn-secondary float-right"
+                >
+                  Regresar
+                </button>
+                {{ form.value | json }}
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

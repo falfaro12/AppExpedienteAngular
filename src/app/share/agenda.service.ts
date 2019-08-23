@@ -8,6 +8,8 @@ import { CustomHandlerErrorService } from './custom-handler-error-service.servic
 import { Horario } from './models/horario';
 import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { AgendaEntidad } from './models/agenda_Entidad';
+import { Agenda } from './models/agenda';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,25 @@ export class AgendaService {
       x => (this.currentUser = x)
     );
   }
+  storeAgenda(agenda: AgendaEntidad): Observable<void> {
+    let headers = new HttpHeaders();
+    if (this.currentUser) {
+      headers = headers.append(
+        'Authorization',
+        'Bearer ' + this.currentUser.access_token
+      );
+    }
+    return this.http
+      .post<Agenda>(
+        this.ServerUrl + 'expediente/cita/agregaAgenda',
+        agenda,
+        {
+          headers
+        }
+      )
+      .pipe(catchError(this.handler.handleError.bind(this)));
+  }
+
 
   getAgendaMedico(): Observable<Horario> {
     let headers = new HttpHeaders();
