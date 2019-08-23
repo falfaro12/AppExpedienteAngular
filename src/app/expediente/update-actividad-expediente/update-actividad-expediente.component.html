@@ -1,1 +1,71 @@
-<p>update-actividad-expediente works!</p>
+<div class="tituloBanner">
+  <div class="col-lg-12 mx-auto">
+    <div class="site-heading">
+      <h1>Actualizar Actividad Deportiva</h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="card col-lg-12">
+      <form #form="ngForm" *ngIf="actividad" (ngSubmit)="onSubmit(form.value)">
+        <input type="hidden" name="id" [(ngModel)]="actividad.id" />
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nombre"
+            [(ngModel)]="actividad.nombre"
+            placeholder="Nombre de Actividad"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="cantidad">Cantidad de veces por semana</label>
+          <select
+            class="form-control"
+            name="cantidad"
+            [(ngModel)]="actividad.pivot.cantidad"
+            [compareWith]='compareFn'
+          >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="minutos">Tiempor de duración en minutos</label>
+          <select
+            class="form-control"
+            name="minutos"
+            [(ngModel)]="actividad.pivot.minutos"
+          >
+            <option>15</option>
+            <option>30</option>
+            <option>45</option>
+            <option>60</option>
+            <option>90</option>
+            <option>120</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary float-left">
+          Actualizar
+        </button>
+        <button
+          type="button"
+          (click)="onBack()"
+          class="btn btn-secondary float-right"
+        >Regresar</button>
+        {{ form.value | json }}
+      </form>
+
+      <br />
+    </div>
+  </div>
+</div>
+

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ExpedienteService } from '../../share/expediente.service';
 import { Expediente } from '../../share/models/expediente';
 import { ExpedienteEntidad } from '../../share/models/expediente-entidad';
-import { ExpedienteService } from '../../share/expediente.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/share/notification.service';
 
 @Component({
-  selector: 'app-detalle-expediente',
-  templateUrl: './detalle-expediente.component.html',
-  styleUrls: ['./detalle-expediente.component.css']
+  selector: 'app-update-expediente',
+  templateUrl: './update-expediente.component.html',
+  styleUrls: ['./update-expediente.component.css']
 })
-export class DetalleExpedienteComponent implements OnInit {
-  datos: Expediente;
+export class UpdateExpedienteComponent implements OnInit {
   expediente: ExpedienteEntidad;
-  error: {};
+  datos : Expediente;
+  error: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -26,12 +26,19 @@ export class DetalleExpedienteComponent implements OnInit {
       (respuesta: Expediente) => {
         this.datos = respuesta;
         this.expediente = this.datos.Expediente[0];
-       },
-       error => (this.error = error));
+      }
+    );
   }
 
-  linkEditar(){
-    this.router.navigate(['./actualizarExpediente'], {relativeTo: this.route});
+  onSubmit(obj: ExpedienteEntidad) {
+    return this.expedienteService.updateExpediente(obj).subscribe(
+      (respuesta: Expediente) => {
+        this.datos = respuesta;
+        this.router.navigate(['./mantExpediente'], {
+          queryParams: {update: 'true'}
+        });
+      }
+    );
   }
 
 }
